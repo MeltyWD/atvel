@@ -1,0 +1,159 @@
+<template>
+  <div class="section section--first">
+    <div class="container">
+      <div class="primary">
+        <div class="primary__offer">
+          <div class="primary-offer">
+            <img src="@img/primary_offer_image.jpg" class="img-cover" alt="" />
+            <div class="primary-offer__content">
+              <div class="primary-offer__text">Take the best</div>
+              <div class="primary-offer__lead">Take the best</div>
+            </div>
+          </div>
+          <!-- .primary-offer -->
+          <div class="primary__content primary__content--md">
+            <a href="#" class="btn-shop">
+              <span>Shop now</span>
+            </a>
+            <div class="primary__text">
+              Elevate your home with Atvel's exquisite range of high-quality,
+              beautifully crafted home goods.
+            </div>
+          </div>
+        </div>
+        <!-- .primary__offer -->
+        <div class="primary__showcase">
+          <div class="swiper" data-primary>
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="primary-item">
+                  <div class="primary-item__content">
+                    <div class="primary-item__title">
+                      <a href="#"
+                        >Atvel <br />робот-пылесос SmartGyro R80 Base Black</a
+                      >
+                    </div>
+                    <div class="primary-item__price">
+                      <div class="primary-item__price-new">
+                        <span class="color-red">$</span>
+                        590
+                      </div>
+                      <div class="primary-item__price-old">$ 720</div>
+                    </div>
+                  </div>
+                  <!-- .primary-item__content -->
+                  <div class="primary-item__media">
+                    <img
+                      src="@img/content/primary_product_item.png"
+                      class="img-fluid"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <!-- .primary-item -->
+              </div>
+              <div class="swiper-slide">
+                <div class="primary-item">
+                  <div class="primary-item__content">
+                    <div class="primary-item__title">
+                      <a href="#"
+                        >Atvel <br />робот-пылесос SmartGyro R80 Base Black</a
+                      >
+                    </div>
+                    <div class="primary-item__price">
+                      <div class="primary-item__price-new">
+                        <span class="color-red">$</span>
+                        590
+                      </div>
+                      <div class="primary-item__price-old">$ 720</div>
+                    </div>
+                  </div>
+                  <!-- .primary-item__content -->
+                  <div class="primary-item__media">
+                    <img
+                      src="@img/content/primary_product_item.png"
+                      class="img-fluid"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <!-- .primary-item -->
+              </div>
+              <div class="swiper-slide">
+                <div class="primary-item">
+                  <div class="primary-item__content">
+                    <div class="primary-item__title">
+                      <a href="#"
+                        >Atvel <br />робот-пылесос SmartGyro R80 Base Black</a
+                      >
+                    </div>
+                    <div class="primary-item__price">
+                      <div class="primary-item__price-new">
+                        <span class="color-red">$</span>
+                        590
+                      </div>
+                      <div class="primary-item__price-old">$ 720</div>
+                    </div>
+                  </div>
+                  <!-- .primary-item__content -->
+                  <div class="primary-item__media">
+                    <img
+                      src="@img/content/primary_product_item.png"
+                      class="img-fluid"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <!-- .primary-item -->
+              </div>
+              <div class="swiper-slide">
+                <div class="primary-item">
+                  <div class="primary-item__content">
+                    <div class="primary-item__title">
+                      <a href="#"
+                        >Atvel <br />робот-пылесос SmartGyro R80 Base Black</a
+                      >
+                    </div>
+                    <div class="primary-item__price">
+                      <div class="primary-item__price-new">
+                        <span class="color-red">$</span>
+                        590
+                      </div>
+                      <div class="primary-item__price-old">$ 720</div>
+                    </div>
+                  </div>
+                  <!-- .primary-item__content -->
+                  <div class="primary-item__media">
+                    <img
+                      src="@img/content/primary_product_item.png"
+                      class="img-fluid"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <!-- .primary-item -->
+              </div>
+            </div>
+            <div class="primary__pagination" data-primary-pagination></div>
+          </div>
+        </div>
+        <!-- .primary__showcase -->
+        <div class="primary__content primary__content--sm">
+          <a href="#" class="btn-shop">
+            <span>Shop now</span>
+          </a>
+          <div class="primary__text">
+            Elevate your home with Atvel's exquisite range of high-quality,
+            beautifully crafted home goods.
+          </div>
+        </div>
+        <!-- .primary__content -->
+      </div>
+      <!-- .primary -->
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts"></script>
+
+<style scoped></style>
