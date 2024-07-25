@@ -1,18 +1,5 @@
 <template>
-  <div class="heading">
-    <div class="container">
-      <div class="heading__wrap heading__wrap--center">
-        <div class="heading__title">Transforming Home Appliances</div>
-        <div class="heading__text">
-          Atvel's website offers a seamless shopping experience with easy
-          navigation, ensuring that you can find and purchase your desired home
-          goods hassle-free. Our user-friendly interface is designed to make
-          your shopping journey enjoyable and efficient.
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- .heading -->
+  <Heading :content="headingContent" />
 
   <div class="intro">
     <div class="intro__main">
@@ -207,6 +194,14 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const headingContent = {
+  title: "Transforming Home Appliances",
+  text: `Atvel's website offers a seamless shopping experience with easy
+          navigation, ensuring that you can find and purchase your desired home
+          goods hassle-free. Our user-friendly interface is designed to make
+          your shopping journey enjoyable and efficient.`,
+};
+</script>
 
 <style scoped></style>
