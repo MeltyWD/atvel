@@ -5,14 +5,10 @@
         <div class="header__nav">
           <ul class="header-nav">
             <li>
-              <a href="#">
-                <span>Home appliances</span>
-              </a>
+              <NuxtLink to="/" prefetch><span>Home appliances</span></NuxtLink>
             </li>
             <li>
-              <a href="#">
-                <span>About us</span>
-              </a>
+              <NuxtLink to="/about" prefetch><span>About us</span></NuxtLink>
             </li>
             <li>
               <a href="#">
