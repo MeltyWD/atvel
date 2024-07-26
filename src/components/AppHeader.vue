@@ -11,9 +11,7 @@
               <NuxtLink to="/about" prefetch><span>About us</span></NuxtLink>
             </li>
             <li>
-              <a href="#">
-                <span>Contact</span>
-              </a>
+              <NuxtLink to="/contact" prefetch><span>Contact</span></NuxtLink>
             </li>
             <li>
               <a href="#">
@@ -196,7 +194,7 @@
                   </a>
                   <div class="mini-cart__description">
                     <div class="mini-cart__title">
-                      <a href="#">Product name</a>
+                      <NuxtLink to="/product">Product name</NuxtLink>
                     </div>
                     <div class="mini-cart__text">
                       Количество:
@@ -219,7 +217,7 @@
                   </a>
                   <div class="mini-cart__description">
                     <div class="mini-cart__title">
-                      <a href="#">Product name</a>
+                      <NuxtLink to="/product">Product name</NuxtLink>
                     </div>
                     <div class="mini-cart__text">
                       Количество:
@@ -242,7 +240,7 @@
                   </a>
                   <div class="mini-cart__description">
                     <div class="mini-cart__title">
-                      <a href="#">Product name</a>
+                      <NuxtLink to="/product">Product name</NuxtLink>
                     </div>
                     <div class="mini-cart__text">
                       Количество:
@@ -266,9 +264,9 @@
                   </div>
                 </div>
                 <div class="mini-cart__send">
-                  <button type="button" class="btn btn-md btn-red">
+                  <NuxtLink to="/cart" class="btn btn-md btn-red" prefetch>
                     <span>Buy</span>
-                  </button>
+                  </NuxtLink>
                 </div>
               </div>
             </div>

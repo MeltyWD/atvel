@@ -5,28 +5,36 @@
         <div class="footer__main">
           <nav class="footer__nav footer-nav">
             <div class="footer-nav__item">
-              <a href="#" class="footer-nav__link">About us</a>
+              <NuxtLink to="/about" class="footer-nav__link">About us</NuxtLink>
             </div>
             <div class="footer-nav__item">
               <a href="#" class="footer-nav__link">Home appliances</a>
             </div>
             <div class="footer-nav__item">
-              <a href="#" class="footer-nav__link">News</a>
+              <NuxtLink to="/news" class="footer-nav__link">News</NuxtLink>
             </div>
             <div class="footer-nav__item">
-              <a href="#" class="footer-nav__link">Shipping and payments</a>
+              <NuxtLink to="/delivery-and-payment" class="footer-nav__link"
+                >Shipping and payments</NuxtLink
+              >
             </div>
             <div class="footer-nav__item">
-              <a href="#" class="footer-nav__link">Warranty</a>
+              <NuxtLink to="/warranty" class="footer-nav__link"
+                >Warranty</NuxtLink
+              >
             </div>
             <div class="footer-nav__item">
-              <a href="#" class="footer-nav__link">Partnership</a>
+              <NuxtLink to="/partnership" class="footer-nav__link"
+                >Partnership</NuxtLink
+              >
             </div>
             <div class="footer-nav__item">
-              <a href="#" class="footer-nav__link">Hiring</a>
+              <NuxtLink to="/vacancy" class="footer-nav__link">Hiring</NuxtLink>
             </div>
             <div class="footer-nav__item">
-              <a href="#" class="footer-nav__link">Contacts</a>
+              <NuxtLink to="/contact" class="footer-nav__link"
+                >Contacts</NuxtLink
+              >
             </div>
           </nav>
           <!-- .footer-nav -->
