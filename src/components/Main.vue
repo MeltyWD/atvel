@@ -2,7 +2,7 @@
   <FirstSection />
   <Showcase />
   <TopChapter />
-  <Swiper />
+  <MainSwiper />
   <Luxurious />
   <Discovery />
 </template>

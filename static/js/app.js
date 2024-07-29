@@ -14,6 +14,7 @@ import Select from "./components/select.js"; // Select
 import SimpleBar from "simplebar"; // Кастомный скролл
 import Choices from "choices.js"; // Select plugin
 import { Fancybox } from "@fancyapps/ui"; // Fancybox modal gallery
+import Sliders from "./components/sliders.js";
 import AOS from "aos";
 
 // Проверка поддержки webp
@@ -59,6 +60,8 @@ Rating();
 Select();
 
 fileField();
+
+Sliders();
 
 // Custom Select
 document.querySelectorAll(".pretty-select").forEach((el) => {

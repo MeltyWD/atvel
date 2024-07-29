@@ -3920,6 +3920,16 @@
   <!-- .section -->
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import "@style/main.css";
+import "@style/main.min.css";
+import Sliders from "../../static/js/components/sliders.js";
+
+onMounted(async () => {
+  if (import.meta.client) {
+    Sliders();
+  }
+});
+</script>
 
 <style scoped></style>

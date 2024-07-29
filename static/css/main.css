@@ -725,6 +725,10 @@ html.with-fancybox {
   scroll-behavior: auto;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 html.with-fancybox body {
   touch-action: none;
 }
