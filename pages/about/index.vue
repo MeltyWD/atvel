@@ -6,13 +6,10 @@
       <div class="container">
         <div class="intro__header">
           <div class="intro__title">
-            Experience a Friendly Interface for Effortless
+            {{ introContent.title }}
           </div>
           <div class="intro__lead">
-            Atvel's website offers a seamless shopping experience with easy
-            navigation, ensuring that you can find and purchase your desired
-            home goods hassle-free. Our user-friendly interface is designed to
-            make your shopping journey enjoyable and efficient.
+            {{ introContent.text }}
           </div>
         </div>
       </div>
@@ -29,13 +26,10 @@
     <div class="container">
       <div class="motivation">
         <div class="motivation__header">
-          Discover Your Perfect Style with Customizable Atvel Home Goods
+          {{ motivationContent.title }}
         </div>
         <div class="motivation__text">
-          Travel offers a wide range of home goods that can be personalized to
-          match your unique taste. Choose from personalized designs, a variety
-          of color options, and flexible sizing choices to create a truly
-          customized and stylish home.
+          {{ motivationContent.text }}
         </div>
       </div>
     </div>
@@ -52,33 +46,31 @@
           />
         </div>
         <div class="item-category__content">
-          <div class="item-category__tag">Tagline</div>
+          <div class="item-category__tag">
+            {{ itemCategoryContent.tag }}
+          </div>
           <div class="item-category__wrap">
             <div class="item-category__title">
-              <a href="#">Discover a Wide Range of High-Quality Products</a>
+              <a href="#">
+                {{ itemCategoryContent.title }}
+              </a>
             </div>
             <div class="item-category__text">
               <p>
-                Atvel's website offers a seamless shopping experience with easy
-                navigation, ensuring that you can find and purchase your desired
-                home goods hassle-free. Our user-friendly interface is designed
-                to make your shopping journey enjoyable and efficient.
+                {{ itemCategoryContent.text }}
               </p>
             </div>
           </div>
           <ul class="item-category__list">
-            <li>
-              Elevate your home with Atvel's exquisite range of high-quality,
-              beautifully crafted home goods.
-            </li>
-            <li>
-              Elevate your home with Atvel's exquisite range of high-quality,
-              beautifully crafted home goods.
+            <li v-for="item in itemCategoryListItems">
+              {{ item.content }}
             </li>
           </ul>
           <div class="item-category__button">
             <a href="#" class="btn btn-red">
-              <span>Learn more</span>
+              <span>
+                {{ itemCategoryContent.button }}
+              </span>
             </a>
           </div>
         </div>
@@ -98,33 +90,31 @@
           />
         </div>
         <div class="item-category__content">
-          <div class="item-category__tag">Tagline</div>
+          <div class="item-category__tag">
+            {{ itemCategoryContent.tag }}
+          </div>
           <div class="item-category__wrap">
             <div class="item-category__title">
-              <a href="#">Discover a Wide Range of High-Quality Products</a>
+              <a href="#">
+                {{ itemCategoryContent.title }}
+              </a>
             </div>
             <div class="item-category__text">
               <p>
-                Atvel's website offers a seamless shopping experience with easy
-                navigation, ensuring that you can find and purchase your desired
-                home goods hassle-free. Our user-friendly interface is designed
-                to make your shopping journey enjoyable and efficient.
+                {{ itemCategoryContent.text }}
               </p>
             </div>
           </div>
           <ul class="item-category__list">
-            <li>
-              Elevate your home with Atvel's exquisite range of high-quality,
-              beautifully crafted home goods.
-            </li>
-            <li>
-              Elevate your home with Atvel's exquisite range of high-quality,
-              beautifully crafted home goods.
+            <li v-for="item in itemCategoryListItems">
+              {{ item.content }}
             </li>
           </ul>
           <div class="item-category__button">
             <a href="#" class="btn btn-red">
-              <span>Learn more</span>
+              <span>
+                {{ itemCategoryContent.button }}
+              </span>
             </a>
           </div>
         </div>
@@ -202,6 +192,39 @@ const headingContent = {
           goods hassle-free. Our user-friendly interface is designed to make
           your shopping journey enjoyable and efficient.`,
 };
+const introContent = {
+  title: "Experience a Friendly Interface for Effortless",
+  text: `Atvel's website offers a seamless shopping experience with easy
+            navigation, ensuring that you can find and purchase your desired
+            home goods hassle-free. Our user-friendly interface is designed to
+            make your shopping journey enjoyable and efficient.`,
+};
+const motivationContent = {
+  title: "Discover Your Perfect Style with Customizable Atvel Home Goods",
+  text: `Travel offers a wide range of home goods that can be personalized to
+          match your unique taste. Choose from personalized designs, a variety
+          of color options, and flexible sizing choices to create a truly
+          customized and stylish home.`,
+};
+const itemCategoryContent = {
+  tag: "Tagline",
+  title: "Discover a Wide Range of High-Quality Products",
+  text: `Atvel's website offers a seamless shopping experience with easy
+                navigation, ensuring that you can find and purchase your desired
+                home goods hassle-free. Our user-friendly interface is designed
+                to make your shopping journey enjoyable and efficient.`,
+  button: "Learn more",
+};
+const itemCategoryListItems = [
+  {
+    content: `Elevate your home with Atvel's exquisite range of high-quality,
+              beautifully crafted home goods.`,
+  },
+  {
+    content: `Elevate your home with Atvel's exquisite range of high-quality,
+              beautifully crafted home goods.`,
+  },
+];
 </script>
 
 <style scoped></style>

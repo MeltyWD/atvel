@@ -1,17 +1,5 @@
 <template>
-  <div class="heading">
-    <div class="container">
-      <div class="heading__wrap heading__wrap--center">
-        <div class="heading__title">Contact us</div>
-        <div class="heading__text">
-          Atvel's website offers a seamless shopping experience with easy
-          navigation, ensuring that you can find and purchase your desired home
-          goods hassle-free. Our user-friendly interface is designed to make
-          your shopping journey enjoyable and efficient.
-        </div>
-      </div>
-    </div>
-  </div>
+  <Heading :content="headingContent" />
   <!-- .heading -->
 
   <div class="intro">
@@ -19,13 +7,10 @@
       <div class="container">
         <div class="intro__header">
           <div class="intro__title">
-            Experience a Friendly Interface for Effortless
+            {{ introContent.title }}
           </div>
           <div class="intro__lead">
-            Atvel's website offers a seamless shopping experience with easy
-            navigation, ensuring that you can find and purchase your desired
-            home goods hassle-free. Our user-friendly interface is designed to
-            make your shopping journey enjoyable and efficient.
+            {{ introContent.lead }}
           </div>
         </div>
       </div>
@@ -40,14 +25,13 @@
 
   <div class="section section--top-md section--bottom-sm">
     <div class="container">
-      <div class="section__tag">Convenient</div>
+      <div class="section__tag">{{ sectionContent.tag }}</div>
       <div class="section__header section__header--sm">
-        <h2 class="section__title">Get in touch</h2>
+        <h2 class="section__title">{{ sectionContent.title }}</h2>
       </div>
       <div class="section-intro">
         <div class="section-intro__text">
-          Travel offers a wide range of home goods that can be personalized to
-          match your unique taste. Choose from personalized designs.
+          {{ sectionContent.text }}
         </div>
         <div class="section-intro__content">
           <div class="contacts">
@@ -65,9 +49,9 @@
                 </svg>
               </div>
               <div class="contacts__content">
-                <div class="contacts__label">Phone</div>
+                <div class="contacts__label">{{ phoneContent.label }}</div>
                 <div class="contacts__value">
-                  <a href="tel:+79112343434">+7 (911) 234-34-34</a>
+                  <a href="tel:+79112343434">{{ phoneContent.value }}</a>
                 </div>
               </div>
             </div>
@@ -86,9 +70,9 @@
                 </svg>
               </div>
               <div class="contacts__content">
-                <div class="contacts__label">Mail</div>
+                <div class="contacts__label">{{ mailContent.label }}</div>
                 <div class="contacts__value">
-                  <a href="mailto:mail@mail.ru">mail@mail.ru</a>
+                  <a href="mailto:mail@mail.ru">{{ mailContent.value }}</a>
                 </div>
               </div>
             </div>
@@ -107,9 +91,9 @@
                 </svg>
               </div>
               <div class="contacts__content">
-                <div class="contacts__label">Office</div>
+                <div class="contacts__label">{{ officeContent.label }}</div>
                 <div class="contacts__value">
-                  123, Main St. Sydney NSW 2000, Australia
+                  {{ officeContent.value }}
                 </div>
               </div>
             </div>
@@ -150,12 +134,12 @@
                     class="checkbox__input"
                     checked
                   />
-                  <span class="checkbox__label">I agree to the Terms</span>
+                  <span class="checkbox__label">{{ checkboxLabel }}</span>
                 </label>
               </div>
               <div class="main-form__item">
                 <button type="button" class="btn btn-red btn-md">
-                  <span>Send</span>
+                  <span>{{ submitBtnText }}</span>
                 </button>
               </div>
             </div>
@@ -172,6 +156,47 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const headingContent = {
+  title: "Contact us",
+  text: `Atvel's website offers a seamless shopping experience with easy
+          navigation, ensuring that you can find and purchase your desired home
+          goods hassle-free. Our user-friendly interface is designed to make
+          your shopping journey enjoyable and efficient.`,
+};
+const introContent = {
+  title: "Experience a Friendly Interface for Effortless",
+  lead: `Atvel's website offers a seamless shopping experience with easy
+            navigation, ensuring that you can find and purchase your desired
+            home goods hassle-free. Our user-friendly interface is designed to
+            make your shopping journey enjoyable and efficient.`,
+};
+const sectionContent = {
+  tag: "Convenient",
+  title: "Get in touch",
+  text: `Travel offers a wide range of home goods that can be personalized to
+          match your unique taste. Choose from personalized designs.`,
+};
+// const contactsContent = [
+//   {
+//     label: "Phone",
+//     value: "+7 (911) 234-34-34",
+//   },
+// ];
+const phoneContent = {
+  label: "Phone",
+  value: "+7 (911) 234-34-34",
+};
+const mailContent = {
+  label: "Mail",
+  value: "mail@mail.ru",
+};
+const officeContent = {
+  label: "Office",
+  value: "123, Main St. Sydney NSW 2000, Australia",
+};
+const checkboxLabel = "I agree to the Terms";
+const submitBtnText = "Send";
+</script>
 
 <style scoped></style>

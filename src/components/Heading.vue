@@ -21,4 +21,8 @@ defineProps<{
 }>();
 </script>
 
-<style scoped></style>
+<style scoped>
+.heading__title {
+  white-space: pre;
+}
+</style>
