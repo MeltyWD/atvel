@@ -1,57 +1,24 @@
 <template>
-  <div class="heading">
-    <div class="container">
-      <div class="heading__wrap">
-        <div class="heading__title">
-          Experience a User-Friendly Interface for Effortless Shopping
-        </div>
-        <div class="heading__text">
-          Atvel's website offers a seamless shopping experience with easy
-          navigation, ensuring that you can find and purchase your desired home
-          goods hassle-free. Our user-friendly interface is designed to make
-          your shopping journey enjoyable and efficient.
-        </div>
-      </div>
-    </div>
-  </div>
+  <Heading :content="headingContent" />
   <!-- .heading -->
 
   <div class="category-intro">
     <div class="category-intro__main">
       <div class="container">
         <div class="category-intro__header">
-          Experience the future of home appliances
+          {{ categoryIntroContent.header }}
         </div>
         <div class="category-intro__lead">
-          Atvel's website offers a seamless shopping experience with easy
-          navigation, ensuring that you can find and purchase your desired home
-          goods hassle-free. Our user-friendly interface is designed to make
-          your shopping journey enjoyable and efficient.
+          {{ categoryIntroContent.lead }}
         </div>
         <div class="category-intro__content">
-          <div class="category-intro__item">
-            <div class="category-intro__num">01</div>
-            <div class="category-intro__text">
-              Atvel's website offers a seamless shopping experience with easy
-              navigation.
-            </div>
-          </div>
-          <!-- .category-intro__item -->
-          <div class="category-intro__item">
-            <div class="category-intro__num">02</div>
-            <div class="category-intro__text">
-              Atvel's website offers a seamless shopping experience with easy
-              navigation.
-            </div>
-          </div>
-          <!-- .intro__item -->
-          <div class="category-intro__item">
-            <div class="category-intro__num">03</div>
-            <div class="category-intro__text">
-              Atvel's website offers a seamless shopping experience with easy
-              navigation.
-            </div>
-          </div>
+          <ul
+            v-for="item of categoryIntroListItems"
+            class="category-intro__item"
+          >
+            <li class="category-intro__num">{{ item.order }}</li>
+            <li class="category-intro__text">{{ item.text }}</li>
+          </ul>
           <!-- .category-intro__item -->
         </div>
       </div>
@@ -70,10 +37,12 @@
         <div class="info-block__media">
           <img src="@img/info_block_image.jpg" class="img-cover" alt="" />
         </div>
-        <div class="info-block__content" data-spoilers>
-          <div class="spoiler open" data-spoiler>
+        <ul class="info-block__content" data-spoilers>
+          <li class="spoiler open" data-spoiler>
             <div class="spoiler__header" data-spoiler-control>
-              <div class="spoiler__title">Programmable Settings</div>
+              <div class="spoiler__title">
+                {{ spoilerContent.title }}
+              </div>
               <div class="spoiler__control">
                 <svg
                   class="ico-svg"
@@ -95,18 +64,18 @@
             >
               <div class="spoiler__wrap">
                 <p>
-                  Customize your kitchen robot's functions to suit your needs
-                  with programmable settings. Set timers, create schedules, and
-                  automate tasks for a more convenient cooking experience.
+                  {{ spoilerContent.text }}
                 </p>
               </div>
             </div>
             <!-- .spoiler__content -->
-          </div>
+          </li>
           <!-- .spoiler -->
-          <div class="spoiler" data-spoiler>
+          <li class="spoiler" data-spoiler>
             <div class="spoiler__header" data-spoiler-control>
-              <div class="spoiler__title">Programmable Settings</div>
+              <div class="spoiler__title">
+                {{ spoilerContent.title }}
+              </div>
               <div class="spoiler__control">
                 <svg
                   class="ico-svg"
@@ -124,18 +93,18 @@
             <div class="spoiler__content" data-spoiler-content>
               <div class="spoiler__wrap">
                 <p>
-                  Customize your kitchen robot's functions to suit your needs
-                  with programmable settings. Set timers, create schedules, and
-                  automate tasks for a more convenient cooking experience.
+                  {{ spoilerContent.text }}
                 </p>
               </div>
             </div>
             <!-- .spoiler__content -->
-          </div>
+          </li>
           <!-- .spoiler -->
-          <div class="spoiler" data-spoiler>
+          <li class="spoiler" data-spoiler>
             <div class="spoiler__header" data-spoiler-control>
-              <div class="spoiler__title">Programmable Settings</div>
+              <div class="spoiler__title">
+                {{ spoilerContent.title }}
+              </div>
               <div class="spoiler__control">
                 <svg
                   class="ico-svg"
@@ -153,16 +122,14 @@
             <div class="spoiler__content" data-spoiler-content>
               <div class="spoiler__wrap">
                 <p>
-                  Customize your kitchen robot's functions to suit your needs
-                  with programmable settings. Set timers, create schedules, and
-                  automate tasks for a more convenient cooking experience.
+                  {{ spoilerContent.text }}
                 </p>
               </div>
             </div>
             <!-- .spoiler__content -->
-          </div>
+          </li>
           <!-- .spoiler -->
-        </div>
+        </ul>
         <!-- .spoiler -->
       </div>
       <!-- .info-block -->
@@ -173,8 +140,8 @@
     <div class="container">
       <div class="hint-block">
         <div class="swiper" data-hint>
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
+          <ul class="swiper-wrapper">
+            <li class="swiper-slide" v-for="item in hintListItems">
               <div class="hint">
                 <div class="hint__icon">
                   <svg
@@ -189,18 +156,15 @@
                   </svg>
                 </div>
                 <div class="hint__title">
-                  Discover a Wide Range of High-Quality Products
+                  {{ item.title }}
                 </div>
                 <div class="hint__text">
-                  Explore our extensive collection of home goods, including
-                  furniture, decor, bedding, kitchenware, and more. Each product
-                  is meticulously crafted with attention to detail and
-                  innovative design elements.
+                  {{ item.text }}
                 </div>
               </div>
               <!-- .hint -->
-            </div>
-            <div class="swiper-slide">
+            </li>
+            <!-- <li class="swiper-slide">
               <div class="hint">
                 <div class="hint__icon">
                   <svg
@@ -224,9 +188,9 @@
                   unique style.
                 </div>
               </div>
-              <!-- .hint -->
-            </div>
-            <div class="swiper-slide">
+
+            </li>
+            <li class="swiper-slide">
               <div class="hint">
                 <div class="hint__icon">
                   <svg
@@ -250,9 +214,8 @@
                   goods.
                 </div>
               </div>
-              <!-- .hint -->
-            </div>
-          </div>
+            </li> -->
+          </ul>
         </div>
       </div>
       <!-- .hint-block -->
@@ -1354,6 +1317,77 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const headingContent = {
+  title: "Experience the future of home appliances",
+  text: `Atvel's website offers a seamless shopping experience with easy
+          navigation, ensuring that you can find and purchase your desired home
+          goods hassle-free. Our user-friendly interface is designed to make
+          your shopping journey enjoyable and efficient.`,
+};
+const categoryIntroContent = {
+  header: "Experience the future of home appliances",
+  lead: `Atvel's website offers a seamless shopping experience with easy
+          navigation, ensuring that you can find and purchase your desired home
+          goods hassle-free. Our user-friendly interface is designed to make
+          your shopping journey enjoyable and efficient.`,
+};
+const categoryIntroListItems = [
+  {
+    order: "01",
+    text: `Atvel's website offers a seamless shopping experience with easy
+              navigation.`,
+  },
+  {
+    order: "02",
+    text: `Atvel's website offers a seamless shopping experience with easy
+              navigation.`,
+  },
+  {
+    order: "03",
+    text: `Atvel's website offers a seamless shopping experience with easy
+              navigation.`,
+  },
+];
+const spoilerContent = {
+  title: "Programmable Settings",
+  text: `Customize your kitchen robot's functions to suit your needs
+                  with programmable settings. Set timers, create schedules, and
+                  automate tasks for a more convenient cooking experience.`,
+};
+const hintListItems = [
+  {
+    title: "Discover a Wide Range of High-Quality Products",
+    text: `Explore our extensive collection of home goods, including
+                  furniture, decor, bedding, kitchenware, and more. Each product
+                  is meticulously crafted with attention to detail and
+                  innovative design elements.`,
+  },
+  {
+    title: "Personalize Your Home with Customization Options",
+    text: `Make your home truly yours by taking advantage of our
+                  customization options. From personalized designs to color
+                  choices and sizing options, create a space that reflects your
+                  unique style.`,
+  },
+  {
+    title: " Engage with a Community of Home Enthusiasts",
+    text: `Join our community of home enthusiasts and stay connected
+                  through our blog posts, how-to guides, and lifestyle articles.
+                  Get inspired and share your own experiences with Atvel home
+                  goods.`,
+  },
+];
+</script>
 
-<style scoped></style>
+<style scoped>
+.category-intro__item {
+  list-style: none;
+}
+.info-block__content {
+  list-style: none;
+}
+.swiper-wrapper {
+  list-style: none;
+}
+</style>

@@ -3,10 +3,14 @@
     <div class="container">
       <ol class="breadcrumb">
         <li class="breadcrumb__item">
-          <a href="#" class="breadcrumb__link">Main</a>
+          <a href="#" class="breadcrumb__link">
+            {{ breadcrumbContent.link }}
+          </a>
         </li>
         <li class="breadcrumb__item">
-          <span class="breadcrumb__active">Корзина</span>
+          <span class="breadcrumb__active">
+            {{ breadcrumbContent.span }}
+          </span>
         </li>
       </ol>
     </div>
@@ -14,14 +18,24 @@
 
   <section class="main">
     <div class="container">
-      <h1>Корзина</h1>
+      <h1>
+        {{ cartHeading }}
+      </h1>
 
       <div class="cart">
         <div class="cart__header">
-          <div class="cart__heading cart__heading--content">Товары</div>
-          <div class="cart__heading cart__heading--price">Стоимость товара</div>
-          <div class="cart__heading cart__heading--quantity">Количество</div>
-          <div class="cart__heading cart__heading--amount">Сумма</div>
+          <div class="cart__heading cart__heading--content">
+            {{ cartHeadingContent.products }}
+          </div>
+          <div class="cart__heading cart__heading--price">
+            {{ cartHeadingContent.price }}
+          </div>
+          <div class="cart__heading cart__heading--quantity">
+            {{ cartHeadingContent.quantity }}
+          </div>
+          <div class="cart__heading cart__heading--amount">
+            {{ cartHeadingContent.amount }}
+          </div>
           <div class="cart__heading cart__heading--remove"></div>
         </div>
         <div class="cart-item">
@@ -30,7 +44,9 @@
               <img src="@img/content/cart_image.png" class="img-cover" alt="" />
             </a>
             <div class="cart-item__title">
-              <NuxtLink to="/product">Product name</NuxtLink>
+              <NuxtLink to="/product">
+                {{ cartItemContent.name }}
+              </NuxtLink>
             </div>
           </div>
           <div class="cart-item__quantity">
@@ -58,10 +74,16 @@
             </div>
           </div>
           <div class="cart-item__price">
-            <span class="color-red">$</span> 590
+            <span class="color-red">
+              {{ cartItemContent.currency }}
+            </span>
+            {{ cartItemContent.price }}
           </div>
           <div class="cart-item__amount">
-            <span class="color-red">$</span> 590
+            <span class="color-red">
+              {{ cartItemContent.currency }}
+            </span>
+            {{ cartItemContent.amount }}
           </div>
           <div class="cart-item__remove">
             <button type="button" class="btn-remove">
@@ -87,7 +109,9 @@
               <img src="@img/content/cart_image.png" class="img-cover" alt="" />
             </a>
             <div class="cart-item__title">
-              <NuxtLink to="/product">Product name</NuxtLink>
+              <NuxtLink to="/product">
+                {{ cartItemContent.name }}
+              </NuxtLink>
             </div>
           </div>
           <div class="cart-item__quantity">
@@ -115,10 +139,16 @@
             </div>
           </div>
           <div class="cart-item__price">
-            <span class="color-red">$</span> 590
+            <span class="color-red">
+              {{ cartItemContent.currency }}
+            </span>
+            {{ cartItemContent.price }}
           </div>
           <div class="cart-item__amount">
-            <span class="color-red">$</span> 590
+            <span class="color-red">
+              {{ cartItemContent.currency }}
+            </span>
+            {{ cartItemContent.amount }}
           </div>
           <div class="cart-item__remove">
             <button type="button" class="btn-remove">
@@ -144,7 +174,9 @@
               <img src="@img/content/cart_image.png" class="img-cover" alt="" />
             </a>
             <div class="cart-item__title">
-              <NuxtLink to="/product">Product name</NuxtLink>
+              <NuxtLink to="/product">
+                {{ cartItemContent.name }}
+              </NuxtLink>
             </div>
           </div>
           <div class="cart-item__quantity">
@@ -172,10 +204,16 @@
             </div>
           </div>
           <div class="cart-item__price">
-            <span class="color-red">$</span> 590
+            <span class="color-red">
+              {{ cartItemContent.currency }}
+            </span>
+            {{ cartItemContent.price }}
           </div>
           <div class="cart-item__amount">
-            <span class="color-red">$</span> 590
+            <span class="color-red">
+              {{ cartItemContent.currency }}
+            </span>
+            {{ cartItemContent.amount }}
           </div>
           <div class="cart-item__remove">
             <button type="button" class="btn-remove">
@@ -198,18 +236,29 @@
 
         <div class="cart__footer">
           <div class="cart__summary">
-            <div class="cart__label">Итого:</div>
-            <div class="cart__total"><span class="color-red">$</span> 590</div>
+            <div class="cart__label">
+              {{ cartTotalContent.title }}
+            </div>
+            <div class="cart__total">
+              <span class="color-red">
+                {{ cartTotalContent.currency }}
+              </span>
+              {{ cartTotalContent.amount }}
+            </div>
           </div>
           <div class="cart__buttons">
             <div class="cart__button cart__button--md">
               <button type="button" class="btn btn-md btn-border">
-                <span>Buy instantly</span>
+                <span>
+                  {{ cartButtonsContent.instant }}
+                </span>
               </button>
             </div>
             <div class="cart__button">
               <NuxtLink to="/order" class="btn btn-md btn-red">
-                <span>Buy</span>
+                <span>
+                  {{ cartButtonsContent.redirect }}
+                </span>
               </NuxtLink>
             </div>
           </div>
@@ -220,6 +269,33 @@
   </section>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const breadcrumbContent = {
+  link: "Main",
+  span: "Корзина",
+};
+const cartHeading = "Корзина";
+const cartHeadingContent = {
+  products: "Товары",
+  price: "Стоимость товара",
+  quantity: "Количество",
+  amount: "Сумма",
+};
+const cartItemContent = {
+  name: "Product name",
+  currency: "$",
+  price: "590",
+  amount: "590",
+};
+const cartTotalContent = {
+  title: "Итого:",
+  currency: "$",
+  amount: "1770",
+};
+const cartButtonsContent = {
+  instant: "Buy instantly",
+  redirect: "Buy",
+};
+</script>
 
 <style scoped></style>
