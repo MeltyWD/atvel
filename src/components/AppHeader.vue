@@ -58,6 +58,9 @@
           </i> </a
         ><!-- .header__logo -->
         <div class="header__content">
+          <div class="header-locale-wrapper" @click="setLocale">
+            <p class="header-locale">{{ locale }}</p>
+          </div>
           <div class="header__call">
             <a href="tel:+79112343434" class="header-phone">
               <i class="header-phone__icon">
@@ -308,4 +311,32 @@
   <NavMobile />
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { Locale, useLocale } from "../composables/useLocale";
+
+const locale = useLocale();
+
+const setLocale = () => {
+  if (locale.value === Locale.ru) {
+    locale.value = Locale.en;
+  } else {
+    locale.value = Locale.ru;
+  }
+};
+</script>
+
+<style>
+.header-locale-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #dadadb;
+  width: 32px;
+  height: 32px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.header-locale {
+  margin: 0;
+}
+</style>

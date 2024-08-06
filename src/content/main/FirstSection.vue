@@ -6,18 +6,21 @@
           <div class="primary-offer">
             <img src="@img/primary_offer_image.jpg" class="img-cover" alt="" />
             <div class="primary-offer__content">
-              <div class="primary-offer__text">Take the best</div>
-              <div class="primary-offer__lead">Take the best</div>
+              <div class="primary-offer__text">
+                {{ content.primary_offer__text }}
+              </div>
+              <div class="primary-offer__lead">
+                {{ content.primary_offer__lead }}
+              </div>
             </div>
           </div>
           <!-- .primary-offer -->
           <div class="primary__content primary__content--md">
             <a href="#" class="btn-shop">
-              <span>Shop now</span>
+              <span>{{ content.btn_shop__text }}</span>
             </a>
             <div class="primary__text">
-              Elevate your home with Atvel's exquisite range of high-quality,
-              beautifully crafted home goods.
+              {{ content.primary__text }}
             </div>
           </div>
         </div>
@@ -140,11 +143,10 @@
         <!-- .primary__showcase -->
         <div class="primary__content primary__content--sm">
           <a href="#" class="btn-shop">
-            <span>Shop now</span>
+            <span>{{ content.btn_shop__text }}</span>
           </a>
           <div class="primary__text">
-            Elevate your home with Atvel's exquisite range of high-quality,
-            beautifully crafted home goods.
+            {{ content.primary__text }}
           </div>
         </div>
         <!-- .primary__content -->
@@ -154,6 +156,10 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineProps<{
+  content: any;
+}>();
+</script>
 
 <style scoped></style>

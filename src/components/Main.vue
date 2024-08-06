@@ -1,5 +1,5 @@
 <template>
-  <FirstSection />
+  <FirstSection :content="content.FirstSection" />
   <Showcase />
   <TopChapter />
   <MainSwiper />
@@ -7,6 +7,10 @@
   <Discovery />
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const props = defineProps<{
+  content: any;
+}>();
+</script>
 
 <style scoped></style>
