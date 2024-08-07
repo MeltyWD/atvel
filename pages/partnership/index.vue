@@ -1,20 +1,5 @@
 <template>
-  <div class="heading">
-    <div class="container">
-      <div class="heading__wrap heading__wrap--center">
-        <div class="heading__title">
-          Partner<br />
-          with us
-        </div>
-        <div class="heading__text">
-          Atvel's website offers a seamless shopping experience with easy
-          navigation, ensuring that you can find and purchase your desired home
-          goods hassle-free. Our user-friendly interface is designed to make
-          your shopping journey enjoyable and efficient.
-        </div>
-      </div>
-    </div>
-  </div>
+  <Heading :content="headingContent" />
   <!-- .heading -->
 
   <div class="intro">
@@ -68,7 +53,7 @@
         <div class="info-block__content" data-spoilers>
           <div class="spoiler open" data-spoiler>
             <div class="spoiler__header" data-spoiler-control>
-              <div class="spoiler__title">Programmable Settings</div>
+              <div class="spoiler__title">{{ spoilerContent.title }}</div>
               <div class="spoiler__control">
                 <svg
                   class="ico-svg"
@@ -90,9 +75,7 @@
             >
               <div class="spoiler__wrap">
                 <p>
-                  Customize your kitchen robot's functions to suit your needs
-                  with programmable settings. Set timers, create schedules, and
-                  automate tasks for a more convenient cooking experience.
+                  {{ spoilerContent.text }}
                 </p>
               </div>
             </div>
@@ -101,7 +84,7 @@
           <!-- .spoiler -->
           <div class="spoiler" data-spoiler>
             <div class="spoiler__header" data-spoiler-control>
-              <div class="spoiler__title">Programmable Settings</div>
+              <div class="spoiler__title">{{ spoilerContent.title }}</div>
               <div class="spoiler__control">
                 <svg
                   class="ico-svg"
@@ -119,9 +102,7 @@
             <div class="spoiler__content" data-spoiler-content>
               <div class="spoiler__wrap">
                 <p>
-                  Customize your kitchen robot's functions to suit your needs
-                  with programmable settings. Set timers, create schedules, and
-                  automate tasks for a more convenient cooking experience.
+                  {{ spoilerContent.text }}
                 </p>
               </div>
             </div>
@@ -130,7 +111,7 @@
           <!-- .spoiler -->
           <div class="spoiler" data-spoiler>
             <div class="spoiler__header" data-spoiler-control>
-              <div class="spoiler__title">Programmable Settings</div>
+              <div class="spoiler__title">{{ spoilerContent.title }}</div>
               <div class="spoiler__control">
                 <svg
                   class="ico-svg"
@@ -148,9 +129,7 @@
             <div class="spoiler__content" data-spoiler-content>
               <div class="spoiler__wrap">
                 <p>
-                  Customize your kitchen robot's functions to suit your needs
-                  with programmable settings. Set timers, create schedules, and
-                  automate tasks for a more convenient cooking experience.
+                  {{ spoilerContent.text }}
                 </p>
               </div>
             </div>
@@ -163,8 +142,8 @@
       <!-- .info-block -->
     </div>
   </div>
-
-  <div class="section section--top-custom-sm">
+  <Faq :section="sectionContent" :faqContents="faqContent" partnership />
+  <!-- <div class="section section--top-custom-sm">
     <div class="container">
       <div class="section__tag">Luxurious</div>
       <div class="section__header">
@@ -189,7 +168,7 @@
             </div>
           </div>
         </div>
-        <!-- .faq -->
+
         <div class="faq" data-spoiler>
           <div class="faq__header" data-spoiler-control>
             <div class="faq__title">
@@ -208,7 +187,6 @@
             </div>
           </div>
         </div>
-        <!-- .faq -->
         <div class="faq" data-spoiler>
           <div class="faq__header" data-spoiler-control>
             <div class="faq__title">
@@ -227,7 +205,6 @@
             </div>
           </div>
         </div>
-        <!-- .faq -->
         <div class="faq" data-spoiler>
           <div class="faq__header" data-spoiler-control>
             <div class="faq__title">
@@ -246,17 +223,16 @@
             </div>
           </div>
         </div>
-        <!-- .faq -->
       </div>
     </div>
-  </div>
+  </div> -->
 
   <div class="section section--white section--top">
     <div class="container">
       <div class="pretty-heading">
-        <div class="pretty-heading__tag">Tagline</div>
+        <div class="pretty-heading__tag">{{ prettyHeadingContent.tag }}</div>
         <h2 class="pretty-heading__title">
-          Узнайте, как открыть бизнес с Atvel в Вашем городе
+          {{ prettyHeadingContent.title }}
         </h2>
       </div>
       <!-- .pretty-heading -->
@@ -289,7 +265,7 @@
                   <span></span>
                 </span>
               </label>
-              <div class="label-text">Текст текст текст</div>
+              <div class="label-text">{{ formContent.textLabel }}</div>
             </div>
           </div>
           <div class="main-form__field main-form__field--xl mt-10">
@@ -302,12 +278,14 @@
                     class="checkbox__input"
                     checked
                   />
-                  <span class="checkbox__label">I agree to the Terms</span>
+                  <span class="checkbox__label">{{
+                    formContent.checkboxLabel
+                  }}</span>
                 </label>
               </div>
               <div class="main-form__item">
                 <button type="button" class="btn btn-red btn-md">
-                  <span>Send</span>
+                  <span>{{ formContent.button }}</span>
                 </button>
               </div>
             </div>
@@ -318,6 +296,63 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const headingContent = {
+  title: "Partner\nwith us",
+  text: `Atvel's website offers a seamless shopping experience with easy
+          navigation, ensuring that you can find and purchase your desired home
+          goods hassle-free. Our user-friendly interface is designed to make
+          your shopping journey enjoyable and efficient.`,
+};
+const spoilerContent = {
+  title: "Programmable Settings",
+  text: `Customize your kitchen robot's functions to suit your needs
+                  with programmable settings. Set timers, create schedules, and
+                  automate tasks for a more convenient cooking experience.`,
+};
+const sectionContent = {
+  tag: "Luxurious",
+  title: "FAQ",
+};
+const faqContent = [
+  {
+    title: "Personalize Your Home with Customization Options",
+    text: `Join our community of home enthusiasts and stay connected
+                through our blog posts, how-to guides, and lifestyle articles.
+                Get inspired and share your own experiences with Atvel home
+                goods.`,
+  },
+  {
+    title: "Personalize Your Home with Customization Options",
+    text: `Join our community of home enthusiasts and stay connected
+                through our blog posts, how-to guides, and lifestyle articles.
+                Get inspired and share your own experiences with Atvel home
+                goods.`,
+  },
+  {
+    title: "Personalize Your Home with Customization Options",
+    text: `Join our community of home enthusiasts and stay connected
+                through our blog posts, how-to guides, and lifestyle articles.
+                Get inspired and share your own experiences with Atvel home
+                goods.`,
+  },
+  {
+    title: "Personalize Your Home with Customization Options",
+    text: `Join our community of home enthusiasts and stay connected
+                through our blog posts, how-to guides, and lifestyle articles.
+                Get inspired and share your own experiences with Atvel home
+                goods.`,
+  },
+];
+const prettyHeadingContent = {
+  tag: "Tagline",
+  title: "Узнайте, как открыть бизнес с Atvel в Вашем городе",
+};
+const formContent = {
+  textLabel: "Текст текст текст",
+  checkboxLabel: "I agree to the Terms",
+  button: "Send",
+};
+</script>
 
 <style scoped></style>

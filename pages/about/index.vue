@@ -1,26 +1,7 @@
 <template>
   <Heading :content="headingContent" />
 
-  <div class="intro">
-    <div class="intro__main">
-      <div class="container">
-        <div class="intro__header">
-          <div class="intro__title">
-            {{ introContent.title }}
-          </div>
-          <div class="intro__lead">
-            {{ introContent.text }}
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- .intro__main -->
-    <div class="intro__media">
-      <img src="@img/intro_image2.jpg" class="img-cover" alt="" />
-    </div>
-    <!-- .intro__item -->
-  </div>
-  <!-- .intro -->
+  <Intro :content="introContent" />
 
   <div class="section section--top-md">
     <div class="container">
@@ -35,7 +16,7 @@
     </div>
   </div>
 
-  <div class="section section--white section--md">
+  <!-- <div class="section section--white section--md">
     <div class="container">
       <div class="item-category">
         <div class="item-category__media">
@@ -62,7 +43,7 @@
             </div>
           </div>
           <ul class="item-category__list">
-            <li v-for="item in itemCategoryListItems">
+            <li v-for="item in itemCategoryContent.categoryListItems">
               {{ item.content }}
             </li>
           </ul>
@@ -75,11 +56,12 @@
           </div>
         </div>
       </div>
-      <!-- .item-category -->
     </div>
-  </div>
+  </div> -->
+  <ItemCategory :content="itemCategoryContent" white />
+  <ItemCategory :content="itemCategoryContentReverse" reverse />
 
-  <div class="section section--md">
+  <!-- <div class="section section--md">
     <div class="container">
       <div class="item-category item-category--reverse">
         <div class="item-category__media">
@@ -106,7 +88,7 @@
             </div>
           </div>
           <ul class="item-category__list">
-            <li v-for="item in itemCategoryListItems">
+            <li v-for="item in itemCategoryContent.categoryListItems">
               {{ item.content }}
             </li>
           </ul>
@@ -119,66 +101,17 @@
           </div>
         </div>
       </div>
-      <!-- .item-category -->
     </div>
-  </div>
+  </div> -->
 
   <div class="section section--top-md">
     <div class="container">
       <div class="post">
-        <div class="post__content">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.
-          </p>
-          <p>
-            Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-            cupidatat non proident, sunt in culpa qui officia deserunt mollit
-            anim id est laborum.Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-            cupidatat non proident, sunt in culpa qui officia deserunt mollit
-            anim id est laborum.Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-            esse cillum dolore eu fugiat nulla pariatur.
-          </p>
-          <p>
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-            officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit
-            amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-            nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-            cupidatat non proident, sunt in culpa qui officia deserunt mollit
-            anim id est laborum.Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-            cupidatat non proident, sunt in culpa qui officia deserunt mollit
-            anim id est laborum.Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua.
-          </p>
-        </div>
+        <ul class="post__content">
+          <li class="post__list-item" v-for="item in postListItems">
+            {{ item.content }}
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -194,7 +127,7 @@ const headingContent = {
 };
 const introContent = {
   title: "Experience a Friendly Interface for Effortless",
-  text: `Atvel's website offers a seamless shopping experience with easy
+  lead: `Atvel's website offers a seamless shopping experience with easy
             navigation, ensuring that you can find and purchase your desired
             home goods hassle-free. Our user-friendly interface is designed to
             make your shopping journey enjoyable and efficient.`,
@@ -214,17 +147,94 @@ const itemCategoryContent = {
                 home goods hassle-free. Our user-friendly interface is designed
                 to make your shopping journey enjoyable and efficient.`,
   button: "Learn more",
-};
-const itemCategoryListItems = [
-  {
-    content: `Elevate your home with Atvel's exquisite range of high-quality,
+  categoryListItems: [
+    {
+      content: `Elevate your home with Atvel's exquisite range of high-quality,
               beautifully crafted home goods.`,
+    },
+    {
+      content: `Elevate your home with Atvel's exquisite range of high-quality,
+              beautifully crafted home goods.`,
+    },
+  ],
+};
+const itemCategoryContentReverse = {
+  tag: "Tagline",
+  title: "Discover a Wide Range of High-Quality Products",
+  text: `Atvel's website offers a seamless shopping experience with easy
+                navigation, ensuring that you can find and purchase your desired
+                home goods hassle-free. Our user-friendly interface is designed
+                to make your shopping journey enjoyable and efficient.`,
+  button: "Learn more",
+  categoryListItems: [
+    {
+      content: `Elevate your home with Atvel's exquisite range of high-quality,
+              beautifully crafted home goods.`,
+    },
+    {
+      content: `Elevate your home with Atvel's exquisite range of high-quality,
+              beautifully crafted home goods.`,
+    },
+  ],
+};
+const postListItems = [
+  {
+    content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum
+            dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.`,
   },
   {
-    content: `Elevate your home with Atvel's exquisite range of high-quality,
-              beautifully crafted home goods.`,
+    content: `Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+            cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum.Lorem ipsum dolor sit amet, consectetur
+            adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+            cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum.Lorem ipsum dolor sit amet, consectetur
+            adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+            esse cillum dolore eu fugiat nulla pariatur.`,
+  },
+  {
+    content: `Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+            officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit
+            amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+            nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+            cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum.Lorem ipsum dolor sit amet, consectetur
+            adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+            cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum.Lorem ipsum dolor sit amet, consectetur
+            adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.`,
   },
 ];
 </script>
 
-<style scoped></style>
+<style scoped>
+.post__content {
+  list-style: none;
+  padding-left: 0;
+}
+</style>
