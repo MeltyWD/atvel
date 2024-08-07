@@ -1,20 +1,4 @@
 <template>
-  <!-- <div class="heading">
-    <div class="container">
-      <div class="heading__wrap">
-        <div class="heading__title">
-          Shipping<br />
-          and payments
-        </div>
-        <div class="heading__text">
-          Atvel's website offers a seamless shopping experience with easy
-          navigation, ensuring that you can find and purchase your desired home
-          goods hassle-free. Our user-friendly interface is designed to make
-          your shopping journey enjoyable and efficient.
-        </div>
-      </div>
-    </div>
-  </div> -->
   <Heading :content="headingContent" />
   <!-- .heading -->
 
@@ -54,7 +38,7 @@
   <!-- .intro -->
 
   <div class="section section--top">
-    <Faq :section="sectionContent" :faqContents="faqContent" />
+    <Faq :section="faqSectionContent" :faqContents="faqContent" />
     <!-- <div class="container">
       <div class="section__tag">Luxurious</div>
       <div class="section__header">
@@ -248,7 +232,7 @@ const introContent = {
               navigation, ensuring that you can find and purchase your desired
               home goods hassle-free.`,
 };
-const sectionContent = {
+const faqSectionContent = {
   tag: "Luxurious",
   title: "FAQ",
 };

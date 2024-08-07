@@ -2,26 +2,7 @@
   <Heading :content="headingContent" />
   <!-- .heading -->
 
-  <div class="intro">
-    <div class="intro__main">
-      <div class="container">
-        <div class="intro__header">
-          <div class="intro__title">
-            {{ introContent.title }}
-          </div>
-          <div class="intro__lead">
-            {{ introContent.lead }}
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- .intro__main -->
-    <div class="intro__media">
-      <img src="@img/intro_image2.jpg" class="img-cover" alt="" />
-    </div>
-    <!-- .intro__item -->
-  </div>
-  <!-- .intro -->
+  <Intro :content="introContent" />
 
   <div class="section section--top-md section--bottom-sm">
     <div class="container">

@@ -1,16 +1,5 @@
 <template>
-  <div class="breadcrumb-block">
-    <div class="container">
-      <ol class="breadcrumb">
-        <li class="breadcrumb__item">
-          <a href="#" class="breadcrumb__link">Main</a>
-        </li>
-        <li class="breadcrumb__item">
-          <span class="breadcrumb__active">Оформление заказа</span>
-        </li>
-      </ol>
-    </div>
-  </div>
+  <Breadcrumb :content="breadcrumbContent" />
 
   <section class="main">
     <div class="container">
@@ -167,6 +156,10 @@
   </section>
 </template>
 
-<script setup lang="ts"></script>
-
+<script setup lang="ts">
+const breadcrumbContent = {
+  link: "Main",
+  span: "Оформление заказа",
+};
+</script>
 <style scoped></style>

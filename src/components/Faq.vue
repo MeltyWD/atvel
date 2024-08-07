@@ -1,5 +1,10 @@
 <template>
-  <div class="section">
+  <div
+    :class="`section
+    ${partnership ? ' section--top-custom-sm' : ''} 
+    ${warranty ? ' section--top' : ''}
+    `"
+  >
     <div class="container">
       <div class="section__tag">
         {{ section.tag }}
@@ -40,6 +45,8 @@ defineProps<{
     title: string;
     text: string;
   }[];
+  partnership?: boolean;
+  warranty?: boolean;
 }>();
 </script>
 

@@ -49,7 +49,7 @@
             alt=""
           />
         </a>
-        <div class="item-category item-category--sm">
+        <!-- <div class="item-category item-category--sm">
           <div class="item-category__media">
             <img
               src="@img/content/item_section_image.jpg"
@@ -84,9 +84,9 @@
               </a>
             </div>
           </div>
-        </div>
+        </div> -->
         <!-- .item-category -->
-        <div class="item-category item-category--reverse">
+        <!-- <div class="item-category item-category--reverse">
           <div class="item-category__media">
             <img
               src="@img/content/item_section_image.jpg"
@@ -119,9 +119,12 @@
               </a>
             </div>
           </div>
-        </div>
+        </div> -->
+        <ItemCategory :content="itemCategoryContentReverse" reverse />
+        <ItemCategory :content="itemCategoryContent" />
+
         <!-- .item-category -->
-        <div class="item-category">
+        <!-- <div class="item-category">
           <div class="item-category__media">
             <img
               src="@img/content/item_section_image.jpg"
@@ -156,7 +159,7 @@
               </a>
             </div>
           </div>
-        </div>
+        </div> -->
         <!-- .item-category -->
       </div>
     </div>
@@ -167,7 +170,7 @@
 
 <script setup lang="ts">
 const headingContent = {
-  title: "Experience a User-Friendly Interface for Effortless Shopping",
+  title: "Experience a User-Friendly Interface \nfor Effortless Shopping",
   text: `Atvel's website offers a seamless shopping experience with easy
           navigation, ensuring that you can find and purchase your desired home
           goods hassle-free. Our user-friendly interface is designed to make
@@ -191,17 +194,36 @@ const itemCategoryContent = {
                 home goods hassle-free. Our user-friendly interface is designed
                 to make your shopping journey enjoyable and efficient.`,
   button: "Learn more",
+  categoryListItems: [
+    {
+      content: `Elevate your home with Atvel's exquisite range of high-quality,
+                beautifully crafted home goods.`,
+    },
+    {
+      content: `Elevate your home with Atvel's exquisite range of high-quality,
+                beautifully crafted home goods.`,
+    },
+  ],
 };
-const itemCategoryListItems = [
-  {
-    content: `Elevate your home with Atvel's exquisite range of high-quality,
+const itemCategoryContentReverse = {
+  tag: "Tagline",
+  title: "Discover a Wide Range of High-Quality Products",
+  text: `Atvel's website offers a seamless shopping experience with easy
+                navigation, ensuring that you can find and purchase your desired
+                home goods hassle-free. Our user-friendly interface is designed
+                to make your shopping journey enjoyable and efficient.`,
+  button: "Learn more",
+  categoryListItems: [
+    {
+      content: `Elevate your home with Atvel's exquisite range of high-quality,
                 beautifully crafted home goods.`,
-  },
-  {
-    content: `Elevate your home with Atvel's exquisite range of high-quality,
+    },
+    {
+      content: `Elevate your home with Atvel's exquisite range of high-quality,
                 beautifully crafted home goods.`,
-  },
-];
+    },
+  ],
+};
 const sectionContent = {
   tag: "Luxurious",
   title: "FAQ",
