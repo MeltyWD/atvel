@@ -49,14 +49,15 @@
             </li>
           </ul>
         </div>
-        <a href="/" class="header__logo">
+        <NuxtLink href="/" class="header__logo">
           <i class="header__logo--base">
             <img src="@img/logo.svg" alt="" class="img-fluid" />
           </i>
           <i class="header__logo--inverse">
             <img src="@img/logo_white.svg" alt="" class="img-fluid" />
-          </i> </a
-        ><!-- .header__logo -->
+          </i>
+        </NuxtLink>
+        <!-- .header__logo -->
         <div class="header__content">
           <div class="header-locale-wrapper" @click="setLocale">
             <p class="header-locale">{{ locale }}</p>
@@ -322,6 +323,7 @@ const setLocale = () => {
   } else {
     locale.value = Locale.ru;
   }
+  localStorage.setItem("userLocale", Locale.ru);
 };
 </script>
 
