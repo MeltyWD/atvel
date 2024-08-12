@@ -10,7 +10,7 @@ const locale = useLocale();
 
 const content = ref(null);
 
-const query = `?populate[FirstSection][populate][0]=PrimaryItem`;
+const query = `?populate=*`;
 
 const getContent = async () => {
   const { data: data, error } = await useApi<any>(`/main-page${query}`);
