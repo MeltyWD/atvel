@@ -1,16 +1,16 @@
 <template>
-  <Heading :content="headingContent" />
+  <Heading :content="content.headingContent" />
 
-  <Intro :content="introContent" />
+  <Intro :content="content.introContent" />
 
   <div class="section section--top-md">
     <div class="container">
       <div class="motivation">
         <div class="motivation__header">
-          {{ motivationContent.title }}
+          {{ content.motivationContent.title }}
         </div>
         <div class="motivation__text">
-          {{ motivationContent.text }}
+          {{ content.motivationContent.text }}
         </div>
       </div>
     </div>
@@ -58,8 +58,20 @@
       </div>
     </div>
   </div> -->
-  <ItemCategory :content="itemCategoryContent" white />
-  <ItemCategory :content="itemCategoryContentReverse" reverse />
+  <ItemCategory
+    :content="content.itemCategoryContent"
+    :reverse="content.itemCategoryContent.reverse"
+    :white="content.itemCategoryContent.white"
+    :list="content.categoryListItems"
+    :full="content.itemCategoryContent.full"
+  />
+  <ItemCategory
+    :content="content.itemCategoryContentReverse"
+    :reverse="content.itemCategoryContentReverse.reverse"
+    :white="content.itemCategoryContentReverse.white"
+    :list="content.categoryListItems"
+    :full="content.itemCategoryContentReverse.full"
+  />
 
   <!-- <div class="section section--md">
     <div class="container">
@@ -108,8 +120,8 @@
     <div class="container">
       <div class="post">
         <ul class="post__content">
-          <li class="post__list-item" v-for="item in postListItems">
-            {{ item.content }}
+          <li class="post__list-item" v-for="item in content.postListItems">
+            {{ item.text }}
           </li>
         </ul>
       </div>
@@ -118,27 +130,27 @@
 </template>
 
 <script setup lang="ts">
-const headingContent = {
-  title: "Transforming Home Appliances",
-  text: `Atvel's website offers a seamless shopping experience with easy
-          navigation, ensuring that you can find and purchase your desired home
-          goods hassle-free. Our user-friendly interface is designed to make
-          your shopping journey enjoyable and efficient.`,
-};
-const introContent = {
-  title: "Experience a Friendly Interface for Effortless",
-  lead: `Atvel's website offers a seamless shopping experience with easy
-            navigation, ensuring that you can find and purchase your desired
-            home goods hassle-free. Our user-friendly interface is designed to
-            make your shopping journey enjoyable and efficient.`,
-};
-const motivationContent = {
-  title: "Discover Your Perfect Style with Customizable Atvel Home Goods",
-  text: `Travel offers a wide range of home goods that can be personalized to
-          match your unique taste. Choose from personalized designs, a variety
-          of color options, and flexible sizing choices to create a truly
-          customized and stylish home.`,
-};
+// const headingContent = {
+//   title: "Transforming Home Appliances",
+//   text: `Atvel's website offers a seamless shopping experience with easy
+//           navigation, ensuring that you can find and purchase your desired home
+//           goods hassle-free. Our user-friendly interface is designed to make
+//           your shopping journey enjoyable and efficient.`,
+// };
+// const introContent = {
+//   title: "Experience a Friendly Interface for Effortless",
+//   lead: `Atvel's website offers a seamless shopping experience with easy
+//             navigation, ensuring that you can find and purchase your desired
+//             home goods hassle-free. Our user-friendly interface is designed to
+//             make your shopping journey enjoyable and efficient.`,
+// };
+// const motivationContent = {
+//   title: "Discover Your Perfect Style with Customizable Atvel Home Goods",
+//   text: `Travel offers a wide range of home goods that can be personalized to
+//           match your unique taste. Choose from personalized designs, a variety
+//           of color options, and flexible sizing choices to create a truly
+//           customized and stylish home.`,
+// };
 const itemCategoryContent = {
   tag: "Tagline",
   title: "Discover a Wide Range of High-Quality Products",
@@ -230,6 +242,75 @@ const postListItems = [
             dolore magna aliqua.`,
   },
 ];
+import { useApi } from "../../src/composables/useApi";
+import { useLocale } from "../../src/composables/useLocale";
+
+const locale = useLocale();
+
+const content = ref({
+  headingContent: {
+    title: "",
+    text: "",
+  },
+  introContent: {
+    title: "",
+    lead: "",
+  },
+  motivationContent: {
+    title: "",
+    text: "",
+  },
+  itemCategoryContent: {
+    tag: "",
+    title: "",
+    text: ``,
+    button: "",
+    white: true,
+    reverse: false,
+    full: true,
+  },
+  itemCategoryContentReverse: {
+    tag: "",
+    title: "",
+    text: ``,
+    button: "",
+    white: false,
+    reverse: true,
+    full: true,
+  },
+  categoryListItems: [
+    {
+      text: ``,
+    },
+  ],
+  postListItems: [
+    {
+      text: ``,
+    },
+  ],
+});
+
+const query = `?populate=*`;
+
+const getContent = async () => {
+  const { data: data, error } = await useApi<any>(`/about${query}`);
+
+  if (data.value) {
+    content.value = data.value.data.attributes;
+
+    console.log(data.value.data.attributes);
+  }
+
+  if (error.value) {
+    console.log(error);
+  }
+};
+
+await getContent();
+
+watch(locale, async () => {
+  await getContent();
+});
 </script>
 
 <style scoped>

@@ -1,8 +1,12 @@
 <template>
-  <Heading :content="headingContent" />
+  <Heading :content="content.headingContent" />
   <!-- .heading -->
-
-  <div class="intro">
+  <Intro
+    :content="content.introContent"
+    :list="content.introContent.list"
+    :listItems="content.introListItems"
+  />
+  <!-- <div class="intro">
     <div class="intro__main">
       <div class="container">
         <div class="intro__header">
@@ -24,7 +28,7 @@
               home goods hassle-free.
             </div>
           </div>
-          <!-- .intro__item -->
+
           <div class="intro__item">
             <div class="intro__text">
               Atvel's website offers a seamless shopping experience with easy
@@ -32,117 +36,21 @@
               home goods hassle-free.
             </div>
           </div>
-          <!-- .intro__item -->
         </div>
       </div>
     </div>
-    <!-- .intro__main -->
     <div class="intro__media">
       <img src="@img/intro_image2.jpg" class="img-cover" alt="" />
     </div>
-    <!-- .intro__item -->
-  </div>
+  </div> -->
   <!-- .intro -->
+  <Spoiler :listItems="content.spoilerListItems" />
 
-  <div class="section section--top">
-    <div class="container">
-      <div class="info-block">
-        <div class="info-block__media">
-          <img src="@img/info_block_image.jpg" class="img-cover" alt="" />
-        </div>
-        <div class="info-block__content" data-spoilers>
-          <div class="spoiler open" data-spoiler>
-            <div class="spoiler__header" data-spoiler-control>
-              <div class="spoiler__title">{{ spoilerContent.title }}</div>
-              <div class="spoiler__control">
-                <svg
-                  class="ico-svg"
-                  viewBox="0 0 34 35"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <use
-                    xlink:href="@img/sprites/sprite.svg#spoiler_arrow"
-                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                  ></use>
-                </svg>
-              </div>
-            </div>
-            <!-- .spoiler__header -->
-            <div
-              class="spoiler__content"
-              data-spoiler-content
-              style="display: block"
-            >
-              <div class="spoiler__wrap">
-                <p>
-                  {{ spoilerContent.text }}
-                </p>
-              </div>
-            </div>
-            <!-- .spoiler__content -->
-          </div>
-          <!-- .spoiler -->
-          <div class="spoiler" data-spoiler>
-            <div class="spoiler__header" data-spoiler-control>
-              <div class="spoiler__title">{{ spoilerContent.title }}</div>
-              <div class="spoiler__control">
-                <svg
-                  class="ico-svg"
-                  viewBox="0 0 34 35"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <use
-                    xlink:href="@img/sprites/sprite.svg#spoiler_arrow"
-                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                  ></use>
-                </svg>
-              </div>
-            </div>
-            <!-- .spoiler__header -->
-            <div class="spoiler__content" data-spoiler-content>
-              <div class="spoiler__wrap">
-                <p>
-                  {{ spoilerContent.text }}
-                </p>
-              </div>
-            </div>
-            <!-- .spoiler__content -->
-          </div>
-          <!-- .spoiler -->
-          <div class="spoiler" data-spoiler>
-            <div class="spoiler__header" data-spoiler-control>
-              <div class="spoiler__title">{{ spoilerContent.title }}</div>
-              <div class="spoiler__control">
-                <svg
-                  class="ico-svg"
-                  viewBox="0 0 34 35"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <use
-                    xlink:href="@img/sprites/sprite.svg#spoiler_arrow"
-                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                  ></use>
-                </svg>
-              </div>
-            </div>
-            <!-- .spoiler__header -->
-            <div class="spoiler__content" data-spoiler-content>
-              <div class="spoiler__wrap">
-                <p>
-                  {{ spoilerContent.text }}
-                </p>
-              </div>
-            </div>
-            <!-- .spoiler__content -->
-          </div>
-          <!-- .spoiler -->
-        </div>
-        <!-- .spoiler -->
-      </div>
-      <!-- .info-block -->
-    </div>
-  </div>
-  <Faq :section="sectionContent" :faqContents="faqContent" partnership />
+  <Faq
+    :content="content.sectionContent"
+    :list="content.faqContent"
+    :partnership="content.partnership"
+  />
   <!-- <div class="section section--top-custom-sm">
     <div class="container">
       <div class="section__tag">Luxurious</div>
@@ -229,12 +137,8 @@
 
   <div class="section section--white section--top">
     <div class="container">
-      <div class="pretty-heading">
-        <div class="pretty-heading__tag">{{ prettyHeadingContent.tag }}</div>
-        <h2 class="pretty-heading__title">
-          {{ prettyHeadingContent.title }}
-        </h2>
-      </div>
+      <PrettyHeading :content="content.prettyHeadingContent" />
+
       <!-- .pretty-heading -->
       <form>
         <div class="main-form">
@@ -253,7 +157,11 @@
               <input type="text" name="city" placeholder="City" />
             </label>
           </div>
-          <div class="main-form__field main-form__field--xl mt-10">
+          <Form
+            :content="content.formContent"
+            :text="content.formContent.text"
+          />
+          <!-- <div class="main-form__field main-form__field--xl mt-10">
             <div class="d-flex align-center column-gap-10">
               <label class="switcher">
                 <input type="checkbox" name="switcher" checked />
@@ -265,7 +173,7 @@
                   <span></span>
                 </span>
               </label>
-              <div class="label-text">{{ formContent.textLabel }}</div>
+              <div class="label-text">{{ content.formContent.textLabel }}</div>
             </div>
           </div>
           <div class="main-form__field main-form__field--xl mt-10">
@@ -278,18 +186,18 @@
                     class="checkbox__input"
                     checked
                   />
-                  <span class="checkbox__label">{{
-                    formContent.checkboxLabel
-                  }}</span>
+                  <span class="checkbox__label">
+                    {{ content.formContent.checkboxLabel }}
+                  </span>
                 </label>
               </div>
               <div class="main-form__item">
                 <button type="button" class="btn btn-red btn-md">
-                  <span>{{ formContent.button }}</span>
+                  <span>{{ content.formContent.textButton }}</span>
                 </button>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </form>
     </div>
@@ -353,6 +261,81 @@ const formContent = {
   checkboxLabel: "I agree to the Terms",
   button: "Send",
 };
+import Spoiler from "./Spoiler.vue";
+import { useApi } from "../../src/composables/useApi";
+import { useLocale } from "../../src/composables/useLocale";
+
+const locale = useLocale();
+
+const content = ref({
+  headingContent: {
+    title: "",
+    text: "",
+  },
+  introContent: {
+    title: "",
+    lead: "",
+    text: "",
+    list: true,
+  },
+  introListItems: [
+    {
+      text: "",
+    },
+  ],
+  spoilerListItems: [
+    {
+      title: "",
+      text: "",
+    },
+  ],
+  open: true,
+  prettyHeadingContent: {
+    tag: "",
+    title: "",
+  },
+
+  sectionContent: {
+    tag: "",
+    title: "",
+  },
+  faqContent: [
+    {
+      title: "",
+      text: ``,
+    },
+  ],
+  partnership: true,
+
+  formContent: {
+    textLabel: "",
+    checkboxLabel: "",
+    textButton: "",
+    text: true,
+  },
+});
+
+const query = `?populate=*`;
+
+const getContent = async () => {
+  const { data: data, error } = await useApi<any>(`/partnership${query}`);
+
+  if (data.value) {
+    content.value = data.value.data.attributes;
+
+    console.log(data.value.data.attributes);
+  }
+
+  if (error.value) {
+    console.log(error);
+  }
+};
+
+await getContent();
+
+watch(locale, async () => {
+  await getContent();
+});
 </script>
 
 <style scoped></style>

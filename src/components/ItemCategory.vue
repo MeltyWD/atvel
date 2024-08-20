@@ -9,7 +9,7 @@
             alt=""
           />
         </div>
-        <div class="item-category__content">
+        <div v-if="full" class="item-category__content">
           <div class="item-category__tag">
             {{ content.tag }}
           </div>
@@ -26,8 +26,8 @@
             </div>
           </div>
           <ul class="item-category__list">
-            <li v-for="item in content.categoryListItems">
-              {{ item.content }}
+            <li v-for="item in list">
+              {{ item.text }}
             </li>
           </ul>
           <div class="item-category__button">
@@ -37,6 +37,25 @@
               </span>
             </a>
           </div>
+        </div>
+        <div v-else class="item-category__content">
+          <div class="item-category__wrap">
+            <div class="item-category__title">
+              <a href="#">
+                {{ content.title }}
+              </a>
+            </div>
+            <div class="item-category__text">
+              <p>
+                {{ content.text }}
+              </p>
+            </div>
+          </div>
+          <ul class="item-category__list">
+            <li v-for="item in list">
+              {{ item.text }}
+            </li>
+          </ul>
         </div>
       </div>
       <!-- .item-category -->
@@ -51,12 +70,14 @@ defineProps<{
     title: string;
     text: string;
     button?: string;
-    categoryListItems: {
-      content: string;
-    }[];
   };
+  list: {
+    text: string;
+  }[];
+
   reverse?: boolean;
   white?: boolean;
+  full?: boolean;
 }>();
 </script>
 

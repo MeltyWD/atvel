@@ -1,8 +1,12 @@
 <template>
-  <Heading :content="headingContent" />
+  <Heading :content="content.headingContent" />
   <!-- .heading -->
-
-  <div class="intro">
+  <Intro
+    :content="content.introContent"
+    :list="content.introContent.list"
+    :listItems="content.introListItems"
+  />
+  <!-- <div class="intro">
     <div class="intro__main">
       <div class="container">
         <div class="intro__header">
@@ -24,7 +28,7 @@
               home goods hassle-free.
             </div>
           </div>
-          <!-- .intro__item -->
+
           <div class="intro__item">
             <div class="intro__text">
               Atvel's website offers a seamless shopping experience with easy
@@ -32,19 +36,19 @@
               home goods hassle-free.
             </div>
           </div>
-          <!-- .intro__item -->
+    
         </div>
       </div>
     </div>
-    <!-- .intro__main -->
+
     <div class="intro__media">
       <img src="@img/intro_image2.jpg" class="img-cover" alt="" />
     </div>
-    <!-- .intro__item -->
-  </div>
-  <!-- .intro -->
 
-  <Faq :section="sectionContent" :faqContents="faqContent" warranty />
+  </div> -->
+  <!-- .intro -->
+  <!-- 
+  <Faq :section="sectionContent" :faqContents="faqContent" warranty /> -->
   <!-- <div class="section section--top">
     <div class="container">
       <div class="section__tag">Luxurious</div>
@@ -131,8 +135,13 @@
       </div>
     </div>
   </div> -->
-  <ItemCategory :content="itemCategoryContent" reverse white />
-  <div class="section section--white section--md">
+  <ItemCategory
+    :content="content.itemCategoryContentReverse"
+    :reverse="content.itemCategoryContentReverse.reverse"
+    :white="content.itemCategoryContentReverse.white"
+    :list="content.categoryListItems"
+  />
+  <!-- <div class="section section--white section--md">
     <div class="container">
       <div class="item-category item-category--reverse">
         <div class="item-category__media">
@@ -168,19 +177,19 @@
           </ul>
         </div>
       </div>
-      <!-- .item-category -->
+
     </div>
-  </div>
+  </div> -->
 
   <div class="section section--top-md">
     <div class="container">
-      <div class="section__tag">{{ formSectionContent.tag }}</div>
+      <div class="section__tag">{{ content.sectionContent.tag }}</div>
       <div class="section__header section__header--sm">
-        <h2 class="section__title">{{ formSectionContent.title }}</h2>
+        <h2 class="section__title">{{ content.sectionContent.title }}</h2>
       </div>
       <div class="section-intro">
         <div class="section-intro__text">
-          {{ formSectionContent.text }}
+          {{ content.sectionContent.text }}
         </div>
       </div>
 
@@ -211,7 +220,11 @@
               <input type="text" name="market" placeholder="Где был куплен" />
             </label>
           </div>
-          <div class="main-form__field main-form__field--xl">
+          <Form
+            :content="content.formContent"
+            :empty="content.formContent.empty"
+          />
+          <!-- <div class="main-form__field main-form__field--xl">
             <label class="field">
               <textarea
                 name="message"
@@ -239,7 +252,7 @@
                 </button>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </form>
     </div>
@@ -247,73 +260,74 @@
 </template>
 
 <script setup lang="ts">
-const headingContent = {
-  title: "Warranty",
-  text: `Atvel's website offers a seamless shopping experience with easy
-          navigation, ensuring that you can find and purchase your desired home
-          goods hassle-free. Our user-friendly interface is designed to make
-          your shopping journey enjoyable and efficient.`,
-};
-const sectionContent = {
-  tag: "Luxurious",
-  title: "Warranty",
-};
-const faqContent = [
-  {
-    title: "Personalize Your Home with Customization Options",
-    text: `Join our community of home enthusiasts and stay connected
-                through our blog posts, how-to guides, and lifestyle articles.
-                Get inspired and share your own experiences with Atvel home
-                goods.`,
-  },
-  {
-    title: "Personalize Your Home with Customization Options",
-    text: `Join our community of home enthusiasts and stay connected
-                through our blog posts, how-to guides, and lifestyle articles.
-                Get inspired and share your own experiences with Atvel home
-                goods.`,
-  },
-  {
-    title: "Personalize Your Home with Customization Options",
-    text: `Join our community of home enthusiasts and stay connected
-                through our blog posts, how-to guides, and lifestyle articles.
-                Get inspired and share your own experiences with Atvel home
-                goods.`,
-  },
-  {
-    title: "Personalize Your Home with Customization Options",
-    text: `Join our community of home enthusiasts and stay connected
-                through our blog posts, how-to guides, and lifestyle articles.
-                Get inspired and share your own experiences with Atvel home
-                goods.`,
-  },
-];
-const itemCategoryContent = {
-  title: "Discover a Wide Range of High-Quality Products",
-  text: `Atvel's website offers a seamless shopping experience with easy
-                navigation, ensuring that you can find and purchase your desired
-                home goods hassle-free. Our user-friendly interface is designed
-                to make your shopping journey enjoyable and efficient.`,
-
-  categoryListItems: [
-    {
-      content: `Elevate your home with Atvel's exquisite range of high-quality,
-                beautifully crafted home goods.`,
-    },
-    {
-      content: `Elevate your home with Atvel's exquisite range of high-quality,
-                beautifully crafted home goods.`,
-    },
-  ],
-};
-const formSectionContent = {
-  tag: "Convenient",
-  title: "Get in touch",
-  text: `Travel offers a wide range of home goods that can be personalized to
-          match your unique taste. Choose from personalized designs.`,
-};
 const checkboxLabel = "I agree to the Terms";
 const submitBtnText = "Send";
+import { useApi } from "../../src/composables/useApi";
+import { useLocale } from "../../src/composables/useLocale";
+
+const locale = useLocale();
+
+const content = ref({
+  headingContent: {
+    title: "",
+    text: "",
+  },
+  introContent: {
+    title: "",
+    lead: "",
+    text: "",
+    list: true,
+  },
+  introListItems: [
+    {
+      text: "",
+    },
+  ],
+  itemCategoryContentReverse: {
+    title: "",
+    text: ``,
+    white: true,
+    reverse: true,
+  },
+  categoryListItems: [
+    {
+      text: "",
+    },
+  ],
+  sectionContent: {
+    tag: "",
+    title: "",
+    text: "",
+  },
+
+  formContent: {
+    checkboxLabel: "",
+    textButton: "",
+    empty: true,
+  },
+});
+
+const query = `?populate=*`;
+
+const getContent = async () => {
+  const { data: data, error } = await useApi<any>(`/warranty${query}`);
+
+  if (data.value) {
+    content.value = data.value.data.attributes;
+
+    console.log(data.value.data.attributes);
+  }
+
+  if (error.value) {
+    console.log(error);
+  }
+};
+
+await getContent();
+
+watch(locale, async () => {
+  await getContent();
+});
 </script>
 
 <style scoped></style>

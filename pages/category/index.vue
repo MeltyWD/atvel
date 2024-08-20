@@ -1,5 +1,5 @@
 <template>
-  <Heading :content="headingContent" />
+  <Heading :content="content.headingContent" />
   <!-- .heading -->
 
   <div class="category-header">
@@ -8,19 +8,19 @@
         <div class="category-header__wrap">
           <div class="category-header__main">
             <div class="category-header__title">
-              {{ categoryHeaderContent.title }}
+              {{ content.categoryHeaderContent.title }}
             </div>
             <div class="category-header__lead">
-              {{ categoryHeaderContent.lead }}
+              {{ content.categoryHeaderContent.lead }}
             </div>
           </div>
           <!-- .category-header__main -->
           <div class="category-header__content">
             <div class="category-header__text">
-              {{ categoryHeaderContent.text }}
+              {{ content.categoryHeaderContent.text }}
             </div>
             <div class="category-header__text">
-              {{ categoryHeaderContent.text }}
+              {{ content.categoryHeaderContent.text }}
             </div>
           </div>
           <!-- .category-header__content -->
@@ -120,8 +120,20 @@
             </div>
           </div>
         </div> -->
-        <ItemCategory :content="itemCategoryContentReverse" reverse />
-        <ItemCategory :content="itemCategoryContent" />
+        <ItemCategory
+          :content="content.itemCategoryContentReverse"
+          :reverse="content.itemCategoryContentReverse.reverse"
+          :white="content.itemCategoryContentReverse.white"
+          :list="content.categoryListItemsReverse"
+          :full="content.itemCategoryContentReverse.full"
+        />
+        <ItemCategory
+          :content="content.itemsCategoryContent"
+          :reverse="content.itemsCategoryContent.reverse"
+          :white="content.itemsCategoryContent.white"
+          :list="content.categoryListItemsReverse"
+          :full="content.itemCategoryContentReverse.full"
+        />
 
         <!-- .item-category -->
         <!-- <div class="item-category">
@@ -164,7 +176,12 @@
       </div>
     </div>
   </div>
-  <Faq :section="sectionContent" :faqContents="faqContent" />
+  <Faq
+    :content="content.sectionContent"
+    :list="content.faqContent"
+    :partnership="content.partnership"
+    :warranty="content.warranty"
+  />
   <!-- .faq -->
 </template>
 
@@ -213,16 +230,6 @@ const itemCategoryContentReverse = {
                 home goods hassle-free. Our user-friendly interface is designed
                 to make your shopping journey enjoyable and efficient.`,
   button: "Learn more",
-  categoryListItems: [
-    {
-      content: `Elevate your home with Atvel's exquisite range of high-quality,
-                beautifully crafted home goods.`,
-    },
-    {
-      content: `Elevate your home with Atvel's exquisite range of high-quality,
-                beautifully crafted home goods.`,
-    },
-  ],
 };
 const sectionContent = {
   tag: "Luxurious",
@@ -258,6 +265,79 @@ const faqContent = [
                 goods.`,
   },
 ];
+import { useApi } from "../../src/composables/useApi";
+import { useLocale } from "../../src/composables/useLocale";
+
+const locale = useLocale();
+
+const content = ref({
+  headingContent: {
+    title: "",
+    text: "",
+  },
+  categoryHeaderContent: {
+    title: "",
+    lead: ``,
+    text: ``,
+  },
+  itemsCategoryContent: {
+    tag: "",
+    title: "",
+    text: ``,
+    button: "",
+    white: true,
+    reverse: false,
+    full: true,
+  },
+  itemCategoryContentReverse: {
+    tag: "",
+    title: "",
+    text: ``,
+    button: "",
+    white: true,
+    reverse: true,
+    full: true,
+  },
+  categoryListItemsReverse: [
+    {
+      text: ``,
+    },
+  ],
+  sectionContent: {
+    tag: "",
+    title: "",
+  },
+  faqContent: [
+    {
+      title: "",
+      text: ``,
+    },
+  ],
+  partnership: false,
+  warranty: false,
+});
+
+const query = `?populate=*`;
+
+const getContent = async () => {
+  const { data: data, error } = await useApi<any>(`/category${query}`);
+
+  if (data.value) {
+    content.value = data.value.data.attributes;
+
+    console.log(data.value.data.attributes);
+  }
+
+  if (error.value) {
+    console.log(error);
+  }
+};
+
+await getContent();
+
+watch(locale, async () => {
+  await getContent();
+});
 </script>
 
 <style scoped></style>

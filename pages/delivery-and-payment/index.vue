@@ -1,8 +1,8 @@
 <template>
   <Heading :content="headingContent" />
   <!-- .heading -->
-
-  <div class="intro">
+  <Intro :content="introContent" list />
+  <!-- <div class="intro">
     <div class="intro__main">
       <div class="container">
         <div class="intro__header">
@@ -19,23 +19,18 @@
               {{ introContent.text }}
             </div>
           </div>
-          <!-- .intro__item -->
           <div class="intro__item">
             <div class="intro__text">
               {{ introContent.text }}
             </div>
           </div>
-          <!-- .intro__item -->
         </div>
       </div>
     </div>
-    <!-- .intro__main -->
     <div class="intro__media">
       <img src="@img/intro_image2.jpg" class="img-cover" alt="" />
     </div>
-    <!-- .intro__item -->
-  </div>
-  <!-- .intro -->
+  </div> -->
 
   <div class="section section--top">
     <Faq :section="faqSectionContent" :faqContents="faqContent" />

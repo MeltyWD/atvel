@@ -1,5 +1,5 @@
 <template>
-  <div class="heading">
+  <!-- <div class="heading">
     <div class="container">
       <div class="heading__wrap heading__wrap--center">
         <div class="heading__title">Join our team</div>
@@ -11,10 +11,11 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
+  <Heading :content="content.headingContent" />
   <!-- .heading -->
-
-  <div class="intro">
+  <Intro :content="content.introContent" :list="content.introContent.list" />
+  <!-- <div class="intro">
     <div class="intro__main">
       <div class="container">
         <div class="intro__header">
@@ -30,26 +31,24 @@
         </div>
       </div>
     </div>
-    <!-- .intro__main -->
+
     <div class="intro__media">
       <img src="@img/intro_image2.jpg" class="img-cover" alt="" />
     </div>
-    <!-- .intro__item -->
-  </div>
-  <!-- .intro -->
+
+  </div> -->
 
   <div class="section section--top">
     <div class="container">
-      <div class="pretty-heading pretty-heading--md">
-        <div class="pretty-heading__tag">Innovation</div>
-        <h2 class="pretty-heading__title">
-          Our Journey Towards Technological Advancement
-        </h2>
-      </div>
+      <PrettyHeading
+        :content="content.prettyHeadingContent"
+        :vacancy="content.prettyHeadingContent.vacancy"
+      />
+
       <!-- .pretty-heading -->
 
-      <div class="steps">
-        <div class="steps__item">
+      <ul class="steps">
+        <li class="steps__item" v-for="item in content.stepsListItems">
           <div class="steps__media">
             <div class="steps__icon">
               <svg
@@ -64,12 +63,12 @@
               </svg>
             </div>
           </div>
-          <div class="steps__title">Milestones</div>
-          <div class="steps__text">Connect with us instantly</div>
-          <div class="steps__num">1</div>
-        </div>
-        <!-- .steps__item -->
-        <div class="steps__item">
+          <div class="steps__title">{{ item.title }}</div>
+          <div class="steps__text">{{ item.text }}</div>
+          <div class="steps__num">{{ item.num }}</div>
+        </li>
+        <!--      
+        <li class="steps__item">
           <div class="steps__media">
             <div class="steps__icon">
               <svg
@@ -87,9 +86,9 @@
           <div class="steps__title">Growth</div>
           <div class="steps__text">Chat with our team in real-time</div>
           <div class="steps__num">2</div>
-        </div>
-        <!-- .steps__item -->
-        <div class="steps__item">
+        </li>
+    
+        <li class="steps__item">
           <div class="steps__media">
             <div class="steps__icon">
               <svg
@@ -110,9 +109,9 @@
             appliance industry.
           </div>
           <div class="steps__num">3</div>
-        </div>
-        <!-- .steps__item -->
-        <div class="steps__item">
+        </li>
+      
+        <li class="steps__item">
           <div class="steps__media">
             <div class="steps__icon">
               <svg
@@ -130,14 +129,18 @@
           <div class="steps__title">Innovation</div>
           <div class="steps__text">We're here to help!</div>
           <div class="steps__num">4</div>
-        </div>
-        <!-- .steps__item -->
-      </div>
+        </li>
+   -->
+      </ul>
       <!-- .steps -->
     </div>
   </div>
-
-  <div class="section section--top-custom-sm">
+  <Faq
+    :content="content.sectionContent"
+    :list="content.faqContent"
+    :vacancy="content.vacancy"
+  />
+  <!-- <div class="section section--top-custom-sm">
     <div class="container">
       <div class="section__tag">Luxurious</div>
       <div class="section__header">
@@ -162,7 +165,7 @@
             </div>
           </div>
         </div>
-        <!-- .faq -->
+       
         <div class="faq" data-spoiler>
           <div class="faq__header" data-spoiler-control>
             <div class="faq__title">
@@ -181,7 +184,7 @@
             </div>
           </div>
         </div>
-        <!-- .faq -->
+      
         <div class="faq" data-spoiler>
           <div class="faq__header" data-spoiler-control>
             <div class="faq__title">
@@ -200,7 +203,7 @@
             </div>
           </div>
         </div>
-        <!-- .faq -->
+     
         <div class="faq" data-spoiler>
           <div class="faq__header" data-spoiler-control>
             <div class="faq__title">
@@ -219,19 +222,19 @@
             </div>
           </div>
         </div>
-        <!-- .faq -->
+     
       </div>
     </div>
-  </div>
+  </div> -->
 
   <div class="section pb-0">
     <div class="container">
       <div class="vacancy">
         <div class="vacancy__content">
-          <div class="vacancy__header">Самые актуальные вакансии на HH.ru</div>
+          <div class="vacancy__header">{{ content.vacancyContent.header }}</div>
           <div class="vacancy__button">
             <a href="#" class="btn btn-red">
-              <span>learn more</span>
+              <span>{{ content.vacancyContent.button }}</span>
             </a>
           </div>
         </div>
@@ -244,10 +247,11 @@
 
   <div class="section section--top">
     <div class="container">
-      <div class="pretty-heading">
+      <PrettyHeading :content="content.prettyHeadingVacancyContent" />
+      <!-- <div class="pretty-heading">
         <div class="pretty-heading__tag">Apply</div>
         <h2 class="pretty-heading__title">Contact HR</h2>
-      </div>
+      </div> -->
       <!-- .pretty-heading -->
       <form>
         <div class="main-form">
@@ -280,7 +284,11 @@
               ></textarea>
             </label>
           </div>
-          <div class="main-form__field main-form__field--xl mt-10">
+          <Form
+            :content="content.formContent"
+            :file="content.formContent.file"
+          />
+          <!-- <div class="main-form__field main-form__field--xl mt-10">
             <label class="file-field" data-file>
               <input
                 type="file"
@@ -329,13 +337,90 @@
                 </button>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </form>
     </div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useApi } from "../../src/composables/useApi";
+import { useLocale } from "../../src/composables/useLocale";
+
+const locale = useLocale();
+
+const content = ref({
+  headingContent: {
+    title: "",
+    text: "",
+  },
+  introContent: {
+    title: "",
+    lead: "",
+    text: "",
+    list: false,
+  },
+  prettyHeadingContent: {
+    tag: "",
+    title: "",
+    vacancy: true,
+  },
+  prettyHeadingVacancyContent: {
+    tag: "",
+    title: "",
+  },
+  sectionContent: {
+    tag: "",
+    title: "",
+  },
+  faqContent: [
+    {
+      title: "",
+      text: ``,
+    },
+  ],
+  vacancy: true,
+  stepsListItems: [
+    {
+      title: "",
+      text: "",
+      num: "",
+    },
+  ],
+  vacancyContent: {
+    header: "",
+    button: "",
+  },
+  formContent: {
+    textLabel: "",
+    checkboxLabel: "",
+    textButton: "",
+    file: true,
+  },
+});
+
+const query = `?populate=*`;
+
+const getContent = async () => {
+  const { data: data, error } = await useApi<any>(`/vacancy${query}`);
+
+  if (data.value) {
+    content.value = data.value.data.attributes;
+
+    console.log(data.value.data.attributes);
+  }
+
+  if (error.value) {
+    console.log(error);
+  }
+};
+
+await getContent();
+
+watch(locale, async () => {
+  await getContent();
+});
+</script>
 
 <style scoped></style>
