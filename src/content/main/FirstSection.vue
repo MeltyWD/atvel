@@ -26,119 +26,82 @@
         </div>
         <!-- .primary__offer -->
         <div class="primary__showcase">
-          <div class="swiper" data-primary>
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <div class="primary-item">
-                  <div class="primary-item__content">
-                    <div class="primary-item__title">
-                      <a href="#"
-                        >Atvel <br />робот-пылесос SmartGyro R80 Base Black</a
-                      >
-                    </div>
-                    <div class="primary-item__price">
-                      <div class="primary-item__price-new">
-                        <span class="color-red">$</span>
-                        590
-                      </div>
-                      <div class="primary-item__price-old">$ 720</div>
-                    </div>
+          <swiper
+            :modules="[Pagination, Autoplay]"
+            :spaceBetween="30"
+            :slidesPerView="1"
+            :observer="true"
+            :observeParents="true"
+            :loop="true"
+            :speed="500"
+            :autoplay="{
+              delay: 3000,
+              disableOnInteraction: false,
+            }"
+            :pagination="{
+              el: '[data-primary-pagination]',
+              clickable: true,
+            }"
+          >
+            <swiper-slide v-for="{ attributes: product } of products">
+              <div class="primary-item">
+                <div class="primary-item__content">
+                  <div class="primary-item__title">
+                    <NuxtLink :to="`/product/${product.link}`">{{
+                      product.title
+                    }}</NuxtLink>
                   </div>
-                  <!-- .primary-item__content -->
-                  <div class="primary-item__media">
-                    <img
-                      src="@img/content/primary_product_item.png"
-                      class="img-fluid"
-                      alt=""
-                    />
+                  <div class="primary-item__price">
+                    <div class="primary-item__price-new">
+                      <span class="color-red">$</span>
+                      {{
+                        `${Math.ceil(
+                          product.price -
+                            (product.discount / 100) * product.price
+                        )}`
+                      }}
+                    </div>
+                    <div class="primary-item__price-old">
+                      $ {{ product.price }}
+                    </div>
                   </div>
                 </div>
-                <!-- .primary-item -->
+                <div class="primary-item__media">
+                  <img
+                    :src="`${baseUrl}${product.image.data.attributes.url}`"
+                    class="img-fluid"
+                    alt=""
+                  />
+                </div>
               </div>
-              <div class="swiper-slide">
-                <div class="primary-item">
-                  <div class="primary-item__content">
-                    <div class="primary-item__title">
-                      <a href="#"
-                        >Atvel <br />робот-пылесос SmartGyro R80 Base Black</a
-                      >
-                    </div>
-                    <div class="primary-item__price">
-                      <div class="primary-item__price-new">
-                        <span class="color-red">$</span>
-                        590
-                      </div>
-                      <div class="primary-item__price-old">$ 720</div>
-                    </div>
+            </swiper-slide>
+            <swiper-slide>
+              <div class="primary-item">
+                <div class="primary-item__content">
+                  <div class="primary-item__title">
+                    <a href="#"
+                      >Atvel <br />робот-пылесос SmartGyro R80 Base Black</a
+                    >
                   </div>
-                  <!-- .primary-item__content -->
-                  <div class="primary-item__media">
-                    <img
-                      src="@img/content/primary_product_item.png"
-                      class="img-fluid"
-                      alt=""
-                    />
+                  <div class="primary-item__price">
+                    <div class="primary-item__price-new">
+                      <span class="color-red">$</span>
+                      590
+                    </div>
+                    <div class="primary-item__price-old">$ 720</div>
                   </div>
                 </div>
-                <!-- .primary-item -->
-              </div>
-              <div class="swiper-slide">
-                <div class="primary-item">
-                  <div class="primary-item__content">
-                    <div class="primary-item__title">
-                      <a href="#"
-                        >Atvel <br />робот-пылесос SmartGyro R80 Base Black</a
-                      >
-                    </div>
-                    <div class="primary-item__price">
-                      <div class="primary-item__price-new">
-                        <span class="color-red">$</span>
-                        590
-                      </div>
-                      <div class="primary-item__price-old">$ 720</div>
-                    </div>
-                  </div>
-                  <!-- .primary-item__content -->
-                  <div class="primary-item__media">
-                    <img
-                      src="@img/content/primary_product_item.png"
-                      class="img-fluid"
-                      alt=""
-                    />
-                  </div>
+                <div class="primary-item__media">
+                  <img
+                    src="@img/content/primary_product_item.png"
+                    class="img-fluid"
+                    alt=""
+                  />
                 </div>
-                <!-- .primary-item -->
               </div>
-              <div class="swiper-slide">
-                <div class="primary-item">
-                  <div class="primary-item__content">
-                    <div class="primary-item__title">
-                      <a href="#"
-                        >Atvel <br />робот-пылесос SmartGyro R80 Base Black</a
-                      >
-                    </div>
-                    <div class="primary-item__price">
-                      <div class="primary-item__price-new">
-                        <span class="color-red">$</span>
-                        590
-                      </div>
-                      <div class="primary-item__price-old">$ 720</div>
-                    </div>
-                  </div>
-                  <!-- .primary-item__content -->
-                  <div class="primary-item__media">
-                    <img
-                      src="@img/content/primary_product_item.png"
-                      class="img-fluid"
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <!-- .primary-item -->
-              </div>
-            </div>
+            </swiper-slide>
             <div class="primary__pagination" data-primary-pagination></div>
-          </div>
+          </swiper>
         </div>
         <!-- .primary__showcase -->
         <div class="primary__content primary__content--sm">
@@ -157,9 +120,26 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
+import { Swiper, SwiperSlide } from "swiper/vue";
+import { Pagination, Autoplay } from "swiper/modules";
+
+const config = useRuntimeConfig();
+
+const baseUrl = config.public.baseURL;
+
+const props = defineProps<{
   content: any;
+  products: any[];
 }>();
+
+console.log(props.products);
+
+watch(
+  () => props.products,
+  () => {
+    console.log(props.products);
+  }
+);
 </script>
 
 <style scoped></style>

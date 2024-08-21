@@ -6,7 +6,7 @@ export const useApi: typeof useFetch = (request, opts) => {
   const locale = useLocale();
 
   return useFetch(request, {
-    baseURL: config.public.baseURL,
+    baseURL: `${config.public.baseURL}/api`,
     headers: {
       Authorization: config.public.apiToken || "",
     },

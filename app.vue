@@ -6,6 +6,7 @@
 <script setup lang="ts">
 import "@style/main.css";
 import "@style/main.min.css";
+import "@style/ckeditor.scss";
 import { Locale, useLocale } from "./src/composables/useLocale";
 
 const locale = useLocale();

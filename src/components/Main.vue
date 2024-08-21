@@ -1,5 +1,5 @@
 <template>
-  <FirstSection :content="content.FirstSection" />
+  <FirstSection :content="content.FirstSection" :products="products" />
   <Showcase />
   <TopChapter />
   <MainSwiper />
@@ -10,6 +10,7 @@
 <script setup lang="ts">
 const props = defineProps<{
   content: any;
+  products: any[];
 }>();
 </script>
 
