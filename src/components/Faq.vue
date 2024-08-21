@@ -1,26 +1,31 @@
 <template>
-  <div class="section">
+  <div
+    :class="`section
+    ${partnership ? ' section--top-custom-sm' : ''} 
+    ${warranty ? ' section--top' : ''}
+    `"
+  >
     <div class="container">
       <div class="section__tag">
-        {{ section.tag }}
+        {{ content.tag }}
       </div>
       <div class="section__header">
         <h2 class="section__title">
-          {{ section.title }}
+          {{ content.title }}
         </h2>
       </div>
       <div class="section__body">
-        <div v-for="faq of faqContents" class="faq" data-spoiler>
+        <div v-for="item of list" class="faq" data-spoiler>
           <div class="faq__header" data-spoiler-control>
             <div class="faq__title">
-              {{ faq.title }}
+              {{ item.title }}
             </div>
             <div class="faq__control"></div>
           </div>
           <div class="faq__content" data-spoiler-content>
             <div class="faq__wrap">
               <p>
-                {{ faq.text }}
+                {{ item.text }}
               </p>
             </div>
           </div>
@@ -32,14 +37,16 @@
 
 <script setup lang="ts">
 defineProps<{
-  section: {
+  content: {
     tag: string;
     title: string;
   };
-  faqContents: {
+  list: {
     title: string;
     text: string;
   }[];
+  partnership?: boolean;
+  warranty?: boolean;
 }>();
 </script>
 

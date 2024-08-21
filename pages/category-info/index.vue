@@ -1319,7 +1319,7 @@
 
 <script setup lang="ts">
 const headingContent = {
-  title: "Experience the future of home appliances",
+  title: "Experience the future \nof home appliances",
   text: `Atvel's website offers a seamless shopping experience with easy
           navigation, ensuring that you can find and purchase your desired home
           goods hassle-free. Our user-friendly interface is designed to make

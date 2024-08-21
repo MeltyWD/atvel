@@ -1,37 +1,18 @@
 <template>
-  <Heading :content="headingContent" />
+  <Heading :content="content.headingContent" />
   <!-- .heading -->
 
-  <div class="intro">
-    <div class="intro__main">
-      <div class="container">
-        <div class="intro__header">
-          <div class="intro__title">
-            {{ introContent.title }}
-          </div>
-          <div class="intro__lead">
-            {{ introContent.lead }}
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- .intro__main -->
-    <div class="intro__media">
-      <img src="@img/intro_image2.jpg" class="img-cover" alt="" />
-    </div>
-    <!-- .intro__item -->
-  </div>
-  <!-- .intro -->
+  <Intro :content="content.introContent" />
 
   <div class="section section--top-md section--bottom-sm">
     <div class="container">
-      <div class="section__tag">{{ sectionContent.tag }}</div>
+      <div class="section__tag">{{ content.sectionContent.tag }}</div>
       <div class="section__header section__header--sm">
-        <h2 class="section__title">{{ sectionContent.title }}</h2>
+        <h2 class="section__title">{{ content.sectionContent.title }}</h2>
       </div>
       <div class="section-intro">
         <div class="section-intro__text">
-          {{ sectionContent.text }}
+          {{ content.sectionContent.text }}
         </div>
         <div class="section-intro__content">
           <div class="contacts">
@@ -49,9 +30,13 @@
                 </svg>
               </div>
               <div class="contacts__content">
-                <div class="contacts__label">{{ phoneContent.label }}</div>
+                <div class="contacts__label">
+                  {{ content.phoneContent.label }}
+                </div>
                 <div class="contacts__value">
-                  <a href="tel:+79112343434">{{ phoneContent.value }}</a>
+                  <a href="tel:+79112343434">{{
+                    content.phoneContent.phoneNumber
+                  }}</a>
                 </div>
               </div>
             </div>
@@ -70,9 +55,13 @@
                 </svg>
               </div>
               <div class="contacts__content">
-                <div class="contacts__label">{{ mailContent.label }}</div>
+                <div class="contacts__label">
+                  {{ content.mailContent.label }}
+                </div>
                 <div class="contacts__value">
-                  <a href="mailto:mail@mail.ru">{{ mailContent.value }}</a>
+                  <a href="mailto:mail@mail.ru">{{
+                    content.mailContent.mail
+                  }}</a>
                 </div>
               </div>
             </div>
@@ -91,9 +80,11 @@
                 </svg>
               </div>
               <div class="contacts__content">
-                <div class="contacts__label">{{ officeContent.label }}</div>
+                <div class="contacts__label">
+                  {{ content.officeContent.label }}
+                </div>
                 <div class="contacts__value">
-                  {{ officeContent.value }}
+                  {{ content.officeContent.address }}
                 </div>
               </div>
             </div>
@@ -124,7 +115,11 @@
               ></textarea>
             </label>
           </div>
-          <div class="main-form__field main-form__field--xl mt-10">
+          <Form
+            :content="content.formContent"
+            :empty="content.formContent.empty"
+          />
+          <!-- <div class="main-form__field main-form__field--xl mt-10">
             <div class="main-form__group">
               <div class="main-form__item">
                 <label class="checkbox">
@@ -143,7 +138,7 @@
                 </button>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </form>
     </div>
@@ -197,6 +192,66 @@ const officeContent = {
 };
 const checkboxLabel = "I agree to the Terms";
 const submitBtnText = "Send";
+import { useApi } from "../../src/composables/useApi";
+import { useLocale } from "../../src/composables/useLocale";
+
+const locale = useLocale();
+
+const content = ref({
+  headingContent: {
+    title: "",
+    text: "",
+  },
+  introContent: {
+    title: "",
+    lead: "",
+  },
+
+  sectionContent: {
+    tag: "",
+    title: "",
+    text: "",
+  },
+  phoneContent: {
+    label: "",
+    phoneNumber: "",
+  },
+  mailContent: {
+    label: "",
+    mail: "",
+  },
+  officeContent: {
+    label: "",
+    address: "",
+  },
+  formContent: {
+    checkboxLabel: "",
+    textButton: "",
+    empty: true,
+  },
+});
+
+const query = `?populate=*`;
+
+const getContent = async () => {
+  const { data: data, error } = await useApi<any>(`/contact${query}`);
+
+  if (data.value) {
+    content.value = data.value.data.attributes;
+
+    console.log(data.value.data.attributes);
+  }
+
+  if (error.value) {
+    console.log(error);
+  }
+};
+
+await getContent();
+
+watch(locale, async () => {
+  await getContent();
+});
 </script>
 
 <style scoped></style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="breadcrumb-block">
+  <!-- <div class="breadcrumb-block">
     <div class="container">
       <ol class="breadcrumb">
         <li class="breadcrumb__item">
@@ -14,7 +14,8 @@
         </li>
       </ol>
     </div>
-  </div>
+  </div> -->
+  <Breadcrumb :content="breadcrumbContent" />
 
   <section class="main">
     <div class="container">
@@ -38,7 +39,7 @@
           </div>
           <div class="cart__heading cart__heading--remove"></div>
         </div>
-        <div class="cart-item">
+        <!-- <div class="cart-item">
           <div class="cart-item__content">
             <a href="#" class="cart-item__media">
               <img src="@img/content/cart_image.png" class="img-cover" alt="" />
@@ -101,7 +102,8 @@
               </i>
             </button>
           </div>
-        </div>
+        </div> -->
+        <CartItem :content="cartItemContent" />
         <!-- .cart-item -->
         <div class="cart-item">
           <div class="cart-item__content">
@@ -270,6 +272,7 @@
 </template>
 
 <script setup lang="ts">
+import CartItem from "./CartItem.vue";
 const breadcrumbContent = {
   link: "Main",
   span: "Корзина",
