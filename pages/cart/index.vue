@@ -274,7 +274,8 @@
 <script setup lang="ts">
 import CartItem from "./CartItem.vue";
 const breadcrumbContent = {
-  link: "Main",
+  link: "/",
+  linkText: "Main",
   span: "Корзина",
 };
 const cartHeading = "Корзина";

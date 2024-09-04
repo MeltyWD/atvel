@@ -254,17 +254,27 @@
               </li>
             </ul>
             <NuxtLink
-              :to="`/news/post/${content.newsPrimaryContent.link}`"
+              :to="`/news/posts/${content.newsPrimaryContent.link}`"
               class="news-primary__link"
               >{{ content.newsPrimaryContent.linkText }}</NuxtLink
             >
           </div>
         </div>
         <div class="news-primary__media news-primary__media--sm">
-          <img src="@img/news_primary_image__sm.jpg" class="img-cover" alt="" />
+          <Image
+            :image="content.newsPrimaryVerticalImage"
+            :altName="content.newsPrimaryImageAlt"
+            :className="content.newsPrimaryImageClass"
+          />
+          <!-- <img src="@img/news_primary_image__sm.jpg" class="img-cover" alt="" /> -->
         </div>
         <div class="news-primary__media news-primary__media--md">
-          <img src="@img/news_primary_image__md.jpg" class="img-cover" alt="" />
+          <Image
+            :image="content.newsPrimaryHorizontalImage"
+            :altName="content.newsPrimaryImageAlt"
+            :className="content.newsPrimaryImageClass"
+          />
+          <!-- <img src="@img/news_primary_image__md.jpg" class="img-cover" alt="" /> -->
         </div>
       </div>
       <!-- .news-primary -->
@@ -274,17 +284,22 @@
           <div class="news-block__grid">
             <div v-for="{ attributes: post } in posts" class="news-item">
               <NuxtLink
-                :to="`/news/post/${post.link}`"
+                :to="`/news/posts/${post.link}`"
                 class="news-item__media"
               >
-                <img
+                <Image
+                  :image="post.previewImage"
+                  :altName="post.previewImageAlt"
+                  :className="post.previewImageClass"
+                />
+                <!-- <img
                   src="@img/content/news_item_image.jpg"
                   class="img-cover"
                   alt=""
-                />
+                /> -->
               </NuxtLink>
               <div class="news-item__title">
-                <NuxtLink :to="`/news/post/${post.link}`">
+                <NuxtLink :to="`/news/posts/${post.link}`">
                   {{ post.previewTitle }}
                 </NuxtLink>
               </div>
@@ -293,7 +308,7 @@
               </div>
               <div class="news-item__footer">
                 <NuxtLink
-                  :to="`/news/post/${post.link}`"
+                  :to="`/news/posts/${post.link}`"
                   class="news-item__link"
                 >
                   {{ post.previewLink }}
@@ -503,7 +518,11 @@
     </div>
   </div>
   <div class="main">
-    <div class="container">
+    <SubscriptionForm
+      :content="content.subscriptionContent"
+      :isPost="content.subscriptionContent.isPost"
+    />
+    <!-- <div class="container">
       <div class="subscribe">
         <h2 class="subscribe__title">
           {{ content.subscriptionContent.title }}
@@ -533,17 +552,16 @@
           {{ content.subscriptionContent.text }}
         </div>
       </div>
-      <!-- .subscribe -->
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script setup lang="ts">
 import { useApi } from "../../src/composables/useApi";
 import { useLocale } from "../../src/composables/useLocale";
+import SubscriptionForm from "./components/SubscriptionForm.vue";
 
 const locale = useLocale();
-const route = useRoute();
 const { find } = useStrapi();
 const posts = ref<any[]>([]);
 const query = `?populate=*`;
@@ -563,6 +581,7 @@ const content = ref({
     subtitle: "",
     button: "",
     text: "",
+    isPost: false,
   },
   newsPrimaryContent: {
     header: "",
@@ -577,10 +596,76 @@ const content = ref({
   buttonText: {
     text: "",
   },
+  newsPrimaryHorizontalImage: {
+    data: {
+      attributes: {
+        formats: {
+          medium: {
+            url: "",
+          },
+          small: {
+            url: "",
+          },
+          source: {
+            url: "",
+          },
+        },
+      },
+    },
+  },
+  newsPrimaryVerticalImage: {
+    data: {
+      attributes: {
+        formats: {
+          medium: {
+            url: "",
+          },
+          small: {
+            url: "",
+          },
+          source: {
+            url: "",
+          },
+        },
+      },
+    },
+  },
+  newsPrimaryImageAlt: "",
+  newsPrimaryImageClass: "",
+
+  previewImage: {
+    data: {
+      attributes: {
+        formats: {
+          medium: {
+            url: "",
+          },
+          small: {
+            url: "",
+          },
+          source: {
+            url: "",
+          },
+        },
+      },
+    },
+  },
+  previewImageAlt: "",
+  previewImageClass: "",
+  breadcrumbContent: {
+    link: "",
+    linkText: "",
+    span: "",
+  },
 });
 
 const getNews = async () => {
-  const data = await find("news2", {
+  const data = await find<{
+    link: string;
+    previewText: string;
+    previewTitle: string;
+    previewLink: string;
+  }>("news2", {
     populate: "*",
     locale: locale.value,
   })
@@ -591,7 +676,9 @@ const getNews = async () => {
   if (data) {
     console.log("1", data);
 
-    posts.value = data;
+    posts.value = data.filter(
+      (x) => x.attributes.link !== content.value.newsPrimaryContent.link
+    );
   }
 };
 

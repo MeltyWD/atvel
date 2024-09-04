@@ -21,7 +21,8 @@
     </div>
     <!-- .intro__main -->
     <div class="intro__media">
-      <img src="@img/intro_image2.jpg" class="img-cover" alt="" />
+      <Image :image="image" :altName="altName" :className="className" />
+      <!-- <img src="@img/intro_image2.jpg" class="img-cover" alt="" /> -->
     </div>
     <!-- .intro__item -->
   </div>
@@ -39,6 +40,25 @@ defineProps<{
     text: string;
   }[];
   list?: boolean;
+  image: {
+    data: {
+      attributes: {
+        formats: {
+          medium: {
+            url: string;
+          };
+          small: {
+            url: string;
+          };
+          source: {
+            url: string;
+          };
+        };
+      };
+    };
+  };
+  altName: string;
+  className: string;
 }>();
 </script>
 

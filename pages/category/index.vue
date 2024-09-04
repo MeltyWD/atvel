@@ -29,10 +29,20 @@
     </div>
     <!-- .category-header__body -->
     <div class="category-header__media category-header__media--sm">
+      <Image
+        :image="content.categoryHeaderVerticalImage"
+        :altName="content.categoryHeaderImageAlt"
+        :className="content.categoryHeaderImageClass"
+      />
       <img src="@img/category_heading_sm.jpg" class="img-cover" alt="" />
     </div>
     <!-- .category-header__media -->
     <div class="category-header__media category-header__media--md">
+      <Image
+        :image="content.categoryHeaderHorizontalImage"
+        :altName="content.categoryHeaderImageAlt"
+        :className="content.categoryHeaderImageClass"
+      />
       <img src="@img/category_heading_md.jpg" class="img-cover" alt="" />
     </div>
     <!-- .category-header__media -->
@@ -43,11 +53,16 @@
     <div class="container">
       <div class="category-group">
         <a href="#" class="category-item-xl">
-          <img
+          <Image
+            :image="content.itemCategoryPreviewImage"
+            :altName="content.itemCategoryPreviewAlt"
+            :className="content.itemCategoryPreviewClass"
+          />
+          <!-- <img
             src="@img/content/item_section_image_xl.jpg"
             class="img-cover"
             alt=""
-          />
+          /> -->
         </a>
         <!-- <div class="item-category item-category--sm">
           <div class="item-category__media">
@@ -126,6 +141,9 @@
           :white="content.itemCategoryContentReverse.white"
           :list="content.categoryListItemsReverse"
           :full="content.itemCategoryContentReverse.full"
+          :image="content.itemCategoryReverseImage"
+          :altName="content.itemCategoryReverseAlt"
+          :className="content.itemCategoryReverseClass"
         />
         <ItemCategory
           :content="content.itemsCategoryContent"
@@ -133,6 +151,9 @@
           :white="content.itemsCategoryContent.white"
           :list="content.categoryListItemsReverse"
           :full="content.itemCategoryContentReverse.full"
+          :image="content.itemCategoryImage"
+          :altName="content.itemCategoryAlt"
+          :className="content.itemCategoryClass"
         />
 
         <!-- .item-category -->
@@ -315,6 +336,101 @@ const content = ref({
   ],
   partnership: false,
   warranty: false,
+  itemCategoryPreviewImage: {
+    data: {
+      attributes: {
+        formats: {
+          medium: {
+            url: "",
+          },
+          small: {
+            url: "",
+          },
+          source: {
+            url: "",
+          },
+        },
+      },
+    },
+  },
+  itemCategoryImage: {
+    data: {
+      attributes: {
+        formats: {
+          medium: {
+            url: "",
+          },
+          small: {
+            url: "",
+          },
+          source: {
+            url: "",
+          },
+        },
+      },
+    },
+  },
+  itemCategoryReverseImage: {
+    data: {
+      attributes: {
+        formats: {
+          medium: {
+            url: "",
+          },
+          small: {
+            url: "",
+          },
+          source: {
+            url: "",
+          },
+        },
+      },
+    },
+  },
+  categoryHeaderHorizontalImage: {
+    data: {
+      attributes: {
+        formats: {
+          medium: {
+            url: "",
+          },
+          small: {
+            url: "",
+          },
+          source: {
+            url: "",
+          },
+        },
+      },
+    },
+  },
+  categoryHeaderVerticalImage: {
+    data: {
+      attributes: {
+        formats: {
+          medium: {
+            url: "",
+          },
+          small: {
+            url: "",
+          },
+          source: {
+            url: "",
+          },
+        },
+      },
+    },
+  },
+  itemCategoryPreviewAlt: "",
+  itemCategoryPreviewClass: "",
+  introImageAlt: "",
+  introImageClass: "",
+  itemCategoryAlt: "",
+  itemCategoryClass: "",
+  itemCategoryReverseAlt: "",
+  itemCategoryReverseClass: "",
+  categoryHeaderImageAlt: "",
+  categoryHeaderImageClass: "",
 });
 
 const query = `?populate=*`;

@@ -3,11 +3,12 @@
     <div class="container">
       <div :class="`item-category${reverse ? ' item-category--reverse' : ''}`">
         <div class="item-category__media">
-          <img
+          <Image :image="image" :altName="altName" :className="className" />
+          <!-- <img
             src="@img/content/item_section_image.jpg"
             class="img-cover"
             alt=""
-          />
+          /> -->
         </div>
         <div v-if="full" class="item-category__content">
           <div class="item-category__tag">
@@ -78,6 +79,25 @@ defineProps<{
   reverse?: boolean;
   white?: boolean;
   full?: boolean;
+  image: {
+    data: {
+      attributes: {
+        formats: {
+          medium: {
+            url: string;
+          };
+          small: {
+            url: string;
+          };
+          source: {
+            url: string;
+          };
+        };
+      };
+    };
+  };
+  altName: string;
+  className: string;
 }>();
 </script>
 

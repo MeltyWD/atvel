@@ -1,8 +1,10 @@
 <template>
-  <div class="breadcrumb-block">
+  <Breadcrumb :content="content.breadcrumbContent" />
+  <!-- <div class="breadcrumb-block">
     <div class="container">
       <ol class="breadcrumb">
         <li class="breadcrumb__item">
+          <NuxtLink to="/news" class="breadcrumb__link"></NuxtLink>
           <a href="#" class="breadcrumb__link">Main</a>
         </li>
         <li class="breadcrumb__item">
@@ -10,19 +12,21 @@
         </li>
       </ol>
     </div>
-  </div>
+  </div> -->
 
   <div class="section section--white pt-0">
     <div class="container">
       <div class="post">
-        <h1 class="post__header">Experience the future</h1>
-        <div class="post__content">
+        <h1 class="post__header">{{ postContent.title }}</h1>
+        <div v-html="postContent.post"></div>
+        <!-- <div class="post__content">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
             aliquip ex ea commodo consequat.
           </p>
+
           <div class="post__image">
             <div class="post__image--sm">
               <img
@@ -39,7 +43,6 @@
               />
             </div>
           </div>
-          <!-- .post__image -->
 
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -134,7 +137,6 @@
               />
             </div>
           </div>
-          <!-- .post__image -->
 
           <p>
             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -150,12 +152,13 @@
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
             culpa qui officia deserunt mollit anim id est laborum.
           </p>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
   <div class="section section--md">
-    <div class="container">
+    <SubscriptionForm :content="content.subscriptionContent" :isPost="true" />
+    <!-- <div class="container">
       <div class="post-footer">
         <div class="post__label">Share this post</div>
         <div class="post__share">
@@ -231,11 +234,99 @@
           By clicking Sign Up, you agree to our Terms and Conditions.
         </div>
       </div>
-      <!-- .subscribe -->
-    </div>
+    </div> -->
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useApi } from "../../../src/composables/useApi";
+import { useLocale } from "../../../src/composables/useLocale";
+import SubscriptionForm from "../components/SubscriptionForm.vue";
+
+const locale = useLocale();
+const route = useRoute();
+const { findOne } = useStrapi();
+const query = `?populate=*`;
+
+const postContent = ref({
+  post: "",
+  title: "",
+});
+
+const content = ref({
+  headerContent: {
+    title: "",
+    text: "",
+  },
+  prettyHeadingContent: {
+    tag: "",
+    title: "",
+    full: true,
+  },
+  subscriptionContent: {
+    label: "",
+    title: "",
+    subtitle: "",
+    button: "",
+    text: "",
+    isPost: true,
+  },
+  newsPrimaryContent: {
+    header: "",
+  },
+  newsPrimaryListItems: [
+    {
+      text: "",
+    },
+  ],
+  mainLinkText: "",
+  currentPageText: "",
+  breadcrumbContent: {
+    link: "",
+    linkText: "",
+    span: "",
+  },
+});
+
+const getPost = async () => {
+  const data = await findOne("/news2", {
+    filters: {
+      link: {
+        $eq: route.params.id,
+      },
+    },
+    populate: "*",
+    locale: locale.value,
+  })
+    // @ts-ignore
+    .then((x) => x.data[0])
+    .catch((error) => console.log(error));
+  if (data) {
+    postContent.value = data.attributes;
+    console.log(data.attributes);
+  }
+};
+
+const getContent = async () => {
+  const { data: data, error } = await useApi<any>(`/news-page${query}`);
+
+  if (data.value) {
+    content.value = data.value.data.attributes;
+
+    console.log(data.value.data.attributes);
+  }
+
+  if (error.value) {
+    console.log(error);
+  }
+};
+
+await getContent();
+getPost();
+watch(locale, async () => {
+  await getContent();
+  getPost();
+});
+</script>
 
 <style scoped></style>
