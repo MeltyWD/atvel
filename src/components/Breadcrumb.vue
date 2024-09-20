@@ -3,7 +3,10 @@
     <div class="container">
       <ol class="breadcrumb">
         <li class="breadcrumb__item">
-          <a href="#" class="breadcrumb__link">{{ content.link }}</a>
+          <NuxtLink :to="`${content.link}`" class="breadcrumb__link">
+            {{ content.linkText }}
+          </NuxtLink>
+          <!-- <a href="#" class="breadcrumb__link">{{ content.link }}</a> -->
         </li>
         <li class="breadcrumb__item">
           <span class="breadcrumb__active">{{ content.span }}</span>
@@ -17,6 +20,7 @@
 defineProps<{
   content: {
     link: string;
+    linkText: string;
     span: string;
   };
 }>();

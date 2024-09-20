@@ -2,7 +2,12 @@
   <Heading :content="content.headingContent" />
   <!-- .heading -->
 
-  <Intro :content="content.introContent" />
+  <Intro
+    :content="content.introContent"
+    :image="content.introImage"
+    :altName="content.introImageAlt"
+    :className="content.introImageClass"
+  />
 
   <div class="section section--top-md section--bottom-sm">
     <div class="container">
@@ -146,7 +151,12 @@
 
   <div class="section-map">
     <div class="section-map__image">
-      <img src="@img/content/map.jpg" class="img-cover" alt="" />
+      <Image
+        :image="content.mapImage"
+        :altName="content.mapImageAlt"
+        :className="content.mapImageClass"
+      />
+      <!-- <img src="@img/content/map.jpg" class="img-cover" alt="" /> -->
     </div>
   </div>
 </template>
@@ -229,6 +239,44 @@ const content = ref({
     textButton: "",
     empty: true,
   },
+  introImage: {
+    data: {
+      attributes: {
+        formats: {
+          medium: {
+            url: "",
+          },
+          small: {
+            url: "",
+          },
+          source: {
+            url: "",
+          },
+        },
+      },
+    },
+  },
+  introImageAlt: "",
+  introImageClass: "",
+  mapImage: {
+    data: {
+      attributes: {
+        formats: {
+          medium: {
+            url: "",
+          },
+          small: {
+            url: "",
+          },
+          source: {
+            url: "",
+          },
+        },
+      },
+    },
+  },
+  mapImageAlt: "",
+  mapImageClass: "",
 });
 
 const query = `?populate=*`;

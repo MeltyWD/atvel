@@ -14,7 +14,13 @@
   </div> -->
   <Heading :content="content.headingContent" />
   <!-- .heading -->
-  <Intro :content="content.introContent" :list="content.introContent.list" />
+  <Intro
+    :content="content.introContent"
+    :list="content.introContent.list"
+    :image="content.introImage"
+    :altName="content.introImageAlt"
+    :className="content.introImageClass"
+  />
   <!-- <div class="intro">
     <div class="intro__main">
       <div class="container">
@@ -239,7 +245,12 @@
           </div>
         </div>
         <div class="vacancy__media">
-          <img src="@img/vacancy_image.png" class="img-fluid" alt="" />
+          <Image
+            :image="content.vacancyImage"
+            :altName="content.vacancyImageAlt"
+            :className="content.vacancyImageClass"
+          />
+          <!-- <img src="@img/vacancy_image.png" class="img-fluid" alt="" /> -->
         </div>
       </div>
     </div>
@@ -398,6 +409,45 @@ const content = ref({
     textButton: "",
     file: true,
   },
+  introImage: {
+    data: {
+      attributes: {
+        formats: {
+          medium: {
+            url: "",
+          },
+          small: {
+            url: "",
+          },
+          source: {
+            url: "",
+          },
+        },
+      },
+    },
+  },
+  introImageAlt: "",
+  introImageClass: "",
+
+  vacancyImage: {
+    data: {
+      attributes: {
+        formats: {
+          medium: {
+            url: "",
+          },
+          small: {
+            url: "",
+          },
+          source: {
+            url: "",
+          },
+        },
+      },
+    },
+  },
+  vacancyImageAlt: "",
+  vacancyImageClass: "",
 });
 
 const query = `?populate=*`;

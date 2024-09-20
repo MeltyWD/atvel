@@ -4,13 +4,10 @@
       <div class="news-header__main">
         <div class="news-header__content">
           <div class="news-header__title">
-            Experience a Interface for Effortless Shopping
+            {{ content.headerContent.title }}
           </div>
           <div class="news-header__text">
-            Atvel's website offers a seamless shopping experience with easy
-            navigation, ensuring that you can find and purchase your desired
-            home goods hassle-free. Our user-friendly interface is designed to
-            make your shopping journey enjoyable and efficient.
+            {{ content.headerContent.text }}
           </div>
         </div>
         <div class="news-header__media">
@@ -229,7 +226,11 @@
 
   <div class="section section--white section--top">
     <div class="container">
-      <div class="pretty-heading">
+      <PrettyHeading
+        :content="content.prettyHeadingContent"
+        :full="content.prettyHeadingContent.full"
+      />
+      <!-- <div class="pretty-heading">
         <div class="pretty-heading__tag">Latest</div>
         <h2 class="pretty-heading__title">
           Experience the future of home appliances
@@ -238,35 +239,42 @@
           Discover the latest advancements and insights in home appliance
           technology.
         </div>
-      </div>
+      </div> -->
       <!-- .pretty-heading -->
 
       <div class="news-primary">
         <div class="news-primary__main">
           <div class="news-primary__header">
-            Unleashing the Power of Robotics
+            {{ content.newsPrimaryContent.header }}
           </div>
           <div class="news-primary__content">
-            <div class="news-primary__text">
-              <p>
-                Explore how our robotic vacuum cleaners revolutionize home
-                cleaning.
-              </p>
-              <p>
-                Explore how our robotic vacuum cleaners revolutionize home
-                cleaning.
-              </p>
-            </div>
-            <NuxtLink to="/news/post" class="news-primary__link"
-              >Technology</NuxtLink
+            <ul class="news-primary__text">
+              <li v-for="item in content.newsPrimaryListItems">
+                {{ item.text }}
+              </li>
+            </ul>
+            <NuxtLink
+              :to="`/news/posts/${content.newsPrimaryContent.link}`"
+              class="news-primary__link"
+              >{{ content.newsPrimaryContent.linkText }}</NuxtLink
             >
           </div>
         </div>
         <div class="news-primary__media news-primary__media--sm">
-          <img src="@img/news_primary_image__sm.jpg" class="img-cover" alt="" />
+          <Image
+            :image="content.newsPrimaryVerticalImage"
+            :altName="content.newsPrimaryImageAlt"
+            :className="content.newsPrimaryImageClass"
+          />
+          <!-- <img src="@img/news_primary_image__sm.jpg" class="img-cover" alt="" /> -->
         </div>
         <div class="news-primary__media news-primary__media--md">
-          <img src="@img/news_primary_image__md.jpg" class="img-cover" alt="" />
+          <Image
+            :image="content.newsPrimaryHorizontalImage"
+            :altName="content.newsPrimaryImageAlt"
+            :className="content.newsPrimaryImageClass"
+          />
+          <!-- <img src="@img/news_primary_image__md.jpg" class="img-cover" alt="" /> -->
         </div>
       </div>
       <!-- .news-primary -->
@@ -274,7 +282,41 @@
       <div class="news-block">
         <div class="news-block__main">
           <div class="news-block__grid">
-            <div class="news-item">
+            <div v-for="{ attributes: post } in posts" class="news-item">
+              <NuxtLink
+                :to="`/news/posts/${post.link}`"
+                class="news-item__media"
+              >
+                <Image
+                  :image="post.previewImage"
+                  :altName="post.previewImageAlt"
+                  :className="post.previewImageClass"
+                />
+                <!-- <img
+                  src="@img/content/news_item_image.jpg"
+                  class="img-cover"
+                  alt=""
+                /> -->
+              </NuxtLink>
+              <div class="news-item__title">
+                <NuxtLink :to="`/news/posts/${post.link}`">
+                  {{ post.previewTitle }}
+                </NuxtLink>
+              </div>
+              <div class="news-item__text">
+                {{ post.previewText }}
+              </div>
+              <div class="news-item__footer">
+                <NuxtLink
+                  :to="`/news/posts/${post.link}`"
+                  class="news-item__link"
+                >
+                  {{ post.previewLink }}
+                </NuxtLink>
+              </div>
+            </div>
+
+            <!-- <div class="news-item">
               <NuxtLink to="/news/post" class="news-item__media">
                 <img
                   src="@img/content/news_item_image.jpg"
@@ -284,7 +326,7 @@
               </NuxtLink>
               <div class="news-item__title">
                 <NuxtLink to="/news/post"
-                  >Discover a&nbsp;Wide Range of High&nbsp;-&nbsp;Quality
+                  >Discover a&nbsp;Wide Range of&nbsp;High-Quality
                   Products</NuxtLink
                 >
               </div>
@@ -300,7 +342,7 @@
                 >
               </div>
             </div>
-            <!-- .news-item -->
+
             <div class="news-item">
               <NuxtLink to="/news/post" class="news-item__media">
                 <img
@@ -327,7 +369,7 @@
                 >
               </div>
             </div>
-            <!-- .news-item -->
+
             <div class="news-item">
               <NuxtLink to="/news/post" class="news-item__media">
                 <img
@@ -354,34 +396,7 @@
                 >
               </div>
             </div>
-            <!-- .news-item -->
-            <div class="news-item">
-              <NuxtLink to="/news/post" class="news-item__media">
-                <img
-                  src="@img/content/news_item_image.jpg"
-                  class="img-cover"
-                  alt=""
-                />
-              </NuxtLink>
-              <div class="news-item__title">
-                <NuxtLink to="/news/post"
-                  >Discover a&nbsp;Wide Range of&nbsp;High-Quality
-                  Products</NuxtLink
-                >
-              </div>
-              <div class="news-item__text">
-                Explore our extensive collection of home goods, including
-                furniture, decor, bedding, kitchenware, and more. Each product
-                is meticulously crafted with attention to detail and innovative
-                design elements.
-              </div>
-              <div class="news-item__footer">
-                <NuxtLink to="/news/post" class="news-item__link"
-                  >Technology</NuxtLink
-                >
-              </div>
-            </div>
-            <!-- .news-item -->
+
 
             <div class="news-item">
               <NuxtLink to="/news/post" class="news-item__media">
@@ -409,7 +424,7 @@
                 >
               </div>
             </div>
-            <!-- .news-item -->
+        
             <div class="news-item">
               <NuxtLink to="/news/post" class="news-item__media">
                 <img
@@ -436,7 +451,7 @@
                 >
               </div>
             </div>
-            <!-- .news-item -->
+            
             <div class="news-item">
               <NuxtLink to="/news/post" class="news-item__media">
                 <img
@@ -463,7 +478,7 @@
                 >
               </div>
             </div>
-            <!-- .news-item -->
+            
             <div class="news-item">
               <NuxtLink to="/news/post" class="news-item__media">
                 <img
@@ -490,12 +505,12 @@
                 >
               </div>
             </div>
-            <!-- .news-item -->
+             -->
           </div>
         </div>
         <div class="news-block__footer">
           <button type="button" class="btn btn-border">
-            <span>Показать еще</span>
+            <span>{{ content.buttonText.text }}</span>
           </button>
         </div>
       </div>
@@ -503,12 +518,17 @@
     </div>
   </div>
   <div class="main">
-    <div class="container">
+    <SubscriptionForm
+      :content="content.subscriptionContent"
+      :isPost="content.subscriptionContent.isPost"
+    />
+    <!-- <div class="container">
       <div class="subscribe">
-        <h2 class="subscribe__title">Stay Connected with Atvel</h2>
+        <h2 class="subscribe__title">
+          {{ content.subscriptionContent.title }}
+        </h2>
         <div class="subscribe__subtitle">
-          Subscribe to our newsletter or follow us on social media for real-time
-          updates.
+          {{ content.subscriptionContent.subtitle }}
         </div>
         <div class="subscribe__main">
           <form>
@@ -522,21 +542,167 @@
               </div>
               <div class="subscribe__button">
                 <button type="submit" class="btn btn-red">
-                  <span>Sign up</span>
+                  <span>{{ content.subscriptionContent.button }}</span>
                 </button>
               </div>
             </div>
           </form>
         </div>
         <div class="subscribe__text">
-          By clicking Sign Up, you agree to our Terms and Conditions.
+          {{ content.subscriptionContent.text }}
         </div>
       </div>
-      <!-- .subscribe -->
-    </div>
+    </div> -->
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useApi } from "../../src/composables/useApi";
+import { useLocale } from "../../src/composables/useLocale";
+import SubscriptionForm from "./components/SubscriptionForm.vue";
+
+const locale = useLocale();
+const { find } = useStrapi();
+const posts = ref<any[]>([]);
+const query = `?populate=*`;
+
+const content = ref({
+  headerContent: {
+    title: "",
+    text: "",
+  },
+  prettyHeadingContent: {
+    tag: "",
+    title: "",
+    full: true,
+  },
+  subscriptionContent: {
+    title: "",
+    subtitle: "",
+    button: "",
+    text: "",
+    isPost: false,
+  },
+  newsPrimaryContent: {
+    header: "",
+    link: "",
+    linkText: "",
+  },
+  newsPrimaryListItems: [
+    {
+      text: "",
+    },
+  ],
+  buttonText: {
+    text: "",
+  },
+  newsPrimaryHorizontalImage: {
+    data: {
+      attributes: {
+        formats: {
+          medium: {
+            url: "",
+          },
+          small: {
+            url: "",
+          },
+          source: {
+            url: "",
+          },
+        },
+      },
+    },
+  },
+  newsPrimaryVerticalImage: {
+    data: {
+      attributes: {
+        formats: {
+          medium: {
+            url: "",
+          },
+          small: {
+            url: "",
+          },
+          source: {
+            url: "",
+          },
+        },
+      },
+    },
+  },
+  newsPrimaryImageAlt: "",
+  newsPrimaryImageClass: "",
+
+  previewImage: {
+    data: {
+      attributes: {
+        formats: {
+          medium: {
+            url: "",
+          },
+          small: {
+            url: "",
+          },
+          source: {
+            url: "",
+          },
+        },
+      },
+    },
+  },
+  previewImageAlt: "",
+  previewImageClass: "",
+  breadcrumbContent: {
+    link: "",
+    linkText: "",
+    span: "",
+  },
+});
+
+const getNews = async () => {
+  const data = await find<{
+    link: string;
+    previewText: string;
+    previewTitle: string;
+    previewLink: string;
+  }>("news2", {
+    populate: "*",
+    locale: locale.value,
+  })
+    // @ts-ignore
+    .then((x) => x.data)
+    .catch((error) => console.log(error));
+
+  if (data) {
+    console.log("1", data);
+
+    posts.value = data.filter(
+      (x) => x.attributes.link !== content.value.newsPrimaryContent.link
+    );
+  }
+};
+
+const getContent = async () => {
+  const { data: data, error } = await useApi<any>(`/news-page${query}`);
+
+  if (data.value) {
+    content.value = data.value.data.attributes;
+
+    console.log(data.value.data.attributes);
+  }
+
+  if (error.value) {
+    console.log(error);
+  }
+};
+
+await getContent();
+getNews();
+
+watch(locale, async () => {
+  await getContent();
+  getNews();
+});
+</script>
 
 <style scoped></style>

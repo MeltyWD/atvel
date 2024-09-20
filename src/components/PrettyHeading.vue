@@ -6,6 +6,9 @@
     <h2 class="pretty-heading__title">
       {{ content.title }}
     </h2>
+    <div v-if="full" class="pretty-heading__text">
+      {{ content.text }}
+    </div>
   </div>
 </template>
 
@@ -14,8 +17,10 @@ defineProps<{
   content: {
     tag: string;
     title: string;
+    text?: string;
   };
   vacancy?: boolean;
+  full?: boolean;
 }>();
 </script>
 

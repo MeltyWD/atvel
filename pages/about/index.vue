@@ -1,6 +1,11 @@
 <template>
   <Heading :content="content.headingContent" />
-  <Intro :content="content.introContent" />
+  <Intro
+    :content="content.introContent"
+    :image="content.introImage"
+    :altName="content.introImageAlt"
+    :className="content.introImageClass"
+  />
   <div class="section section--top-md">
     <div class="container">
       <div class="motivation">
@@ -20,6 +25,9 @@
     :white="content.itemCategoryContent.white"
     :list="content.categoryListItems"
     :full="content.itemCategoryContent.full"
+    :image="content.itemCategoryImage"
+    :altName="content.itemCategoryAlt"
+    :className="content.itemCategoryClass"
   />
   <ItemCategory
     :content="content.itemCategoryContentReverse"
@@ -27,6 +35,9 @@
     :white="content.itemCategoryContentReverse.white"
     :list="content.categoryListItems"
     :full="content.itemCategoryContentReverse.full"
+    :image="content.itemCategoryReverseImage"
+    :altName="content.itemCategoryReverseAlt"
+    :className="content.itemCategoryReverseClass"
   />
 
   <div class="section section--top-md">
@@ -89,15 +100,74 @@ const content = ref({
       text: ``,
     },
   ],
+  introImage: {
+    data: {
+      attributes: {
+        formats: {
+          medium: {
+            url: "",
+          },
+          small: {
+            url: "",
+          },
+          source: {
+            url: "",
+          },
+        },
+      },
+    },
+  },
+  introImageAlt: "",
+  introImageClass: "",
+
+  itemCategoryImage: {
+    data: {
+      attributes: {
+        formats: {
+          medium: {
+            url: "",
+          },
+          small: {
+            url: "",
+          },
+          source: {
+            url: "",
+          },
+        },
+      },
+    },
+  },
+  itemCategoryAlt: "",
+  itemCategoryClass: "",
+
+  itemCategoryReverseImage: {
+    data: {
+      attributes: {
+        formats: {
+          medium: {
+            url: "",
+          },
+          small: {
+            url: "",
+          },
+          source: {
+            url: "",
+          },
+        },
+      },
+    },
+  },
+  itemCategoryReverseAlt: "",
+  itemCategoryReverseClass: "",
 });
 
 const query = `?populate=*`;
-
 const getContent = async () => {
   const { data: data, error } = await useApi<any>(`/about${query}`);
 
   if (data.value) {
     content.value = data.value.data.attributes;
+    console.log(data.value.data.attributes);
   }
 
   if (error.value) {

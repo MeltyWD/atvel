@@ -3,7 +3,8 @@
     <div class="container">
       <div class="info-block">
         <div class="info-block__media">
-          <img src="@img/info_block_image.jpg" class="img-cover" alt="" />
+          <Image :image="image" :altName="altName" :className="className" />
+          <!-- <img src="@img/info_block_image.jpg" class="img-cover" alt="" /> -->
         </div>
         <ul class="info-block__content" data-spoilers>
           <li
@@ -51,6 +52,25 @@ defineProps<{
     text: string;
   }[];
   open?: boolean;
+  image: {
+    data: {
+      attributes: {
+        formats: {
+          medium: {
+            url: string;
+          };
+          small: {
+            url: string;
+          };
+          source: {
+            url: string;
+          };
+        };
+      };
+    };
+  };
+  altName: string;
+  className: string;
 }>();
 </script>
 

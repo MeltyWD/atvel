@@ -5,6 +5,9 @@
     :content="content.introContent"
     :list="content.introContent.list"
     :listItems="content.introListItems"
+    :image="content.introImage"
+    :altName="content.introImageAlt"
+    :className="content.introImageClass"
   />
   <!-- <div class="intro">
     <div class="intro__main">
@@ -140,6 +143,9 @@
     :reverse="content.itemCategoryContentReverse.reverse"
     :white="content.itemCategoryContentReverse.white"
     :list="content.categoryListItems"
+    :image="content.itemCategoryReverseImage"
+    :altName="content.itemCategoryReverseAlt"
+    :className="content.itemCategoryReverseClass"
   />
   <!-- <div class="section section--white section--md">
     <div class="container">
@@ -305,6 +311,44 @@ const content = ref({
     textButton: "",
     empty: true,
   },
+  introImage: {
+    data: {
+      attributes: {
+        formats: {
+          medium: {
+            url: "",
+          },
+          small: {
+            url: "",
+          },
+          source: {
+            url: "",
+          },
+        },
+      },
+    },
+  },
+  introImageAlt: "",
+  introImageClass: "",
+  itemCategoryReverseImage: {
+    data: {
+      attributes: {
+        formats: {
+          medium: {
+            url: "",
+          },
+          small: {
+            url: "",
+          },
+          source: {
+            url: "",
+          },
+        },
+      },
+    },
+  },
+  itemCategoryReverseAlt: "",
+  itemCategoryReverseClass: "",
 });
 
 const query = `?populate=*`;

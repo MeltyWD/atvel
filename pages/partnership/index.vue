@@ -5,6 +5,9 @@
     :content="content.introContent"
     :list="content.introContent.list"
     :listItems="content.introListItems"
+    :image="content.introImage"
+    :altName="content.introImageAlt"
+    :className="content.introImageClass"
   />
   <!-- <div class="intro">
     <div class="intro__main">
@@ -44,7 +47,12 @@
     </div>
   </div> -->
   <!-- .intro -->
-  <Spoiler :listItems="content.spoilerListItems" />
+  <Spoiler
+    :listItems="content.spoilerListItems"
+    :image="content.spoilerImage"
+    :altName="content.spoilerImageAlt"
+    :className="content.spoilerImageClass"
+  />
 
   <Faq
     :content="content.sectionContent"
@@ -261,7 +269,7 @@ const formContent = {
   checkboxLabel: "I agree to the Terms",
   button: "Send",
 };
-import Spoiler from "./Spoiler.vue";
+import Spoiler from "./components/Spoiler.vue";
 import { useApi } from "../../src/composables/useApi";
 import { useLocale } from "../../src/composables/useLocale";
 
@@ -313,6 +321,44 @@ const content = ref({
     textButton: "",
     text: true,
   },
+  introImage: {
+    data: {
+      attributes: {
+        formats: {
+          medium: {
+            url: "",
+          },
+          small: {
+            url: "",
+          },
+          source: {
+            url: "",
+          },
+        },
+      },
+    },
+  },
+  introImageAlt: "",
+  introImageClass: "",
+  spoilerImage: {
+    data: {
+      attributes: {
+        formats: {
+          medium: {
+            url: "",
+          },
+          small: {
+            url: "",
+          },
+          source: {
+            url: "",
+          },
+        },
+      },
+    },
+  },
+  spoilerImageAlt: "",
+  spoilerImageClass: "",
 });
 
 const query = `?populate=*`;
