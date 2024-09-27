@@ -6,11 +6,45 @@
     </div>
     <!-- .section__header -->
     <div class="section__body">
+      <swiper
+        data-compilation
+        :modules="[Navigation]"
+        :observer="true"
+        :loop="true"
+        :observeParents="true"
+        :slidesPerView="1"
+        :spaceBetween="20"
+        :speed="500"
+        :navigation="{
+          nextEl: '[data-compilation-next]',
+          prevEl: '[data-compilation-prev]',
+        }"
+        :breakpoints="{
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+          },
+          1250: {
+            slidesPerView: 'auto',
+            spaceBetween: 20,
+          },
+        }"
+        :on="{}"
+      >
+        <swiper-slide> </swiper-slide>
+        <swiper-slide> </swiper-slide>
+        <swiper-slide> </swiper-slide>
+        <swiper-slide> </swiper-slide>
+      </swiper>
       <div class="swiper" data-compilation>
         <div class="swiper-wrapper">
-          <div class="swiper-slide">
+          <div class="swiper-slide" v-for="item in content.productList">
             <div class="item h-100">
-              <div class="item__action">Рассрочка</div>
+              <div class="item__action">{{ item.action }}</div>
               <div class="item__media">
                 <div class="item__image">
                   <img
@@ -23,149 +57,7 @@
               <!-- .item__media -->
               <div class="item__content">
                 <div class="item__rating">
-                  <div class="rating" data-rating="3.5" data-readonly="true">
-                    <div class="rating__body">
-                      <div class="rating__stars">
-                        <div class="rating__star">
-                          <svg
-                            class="ico-svg"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <use
-                              xlink:href="@img/sprites/sprite.svg#star"
-                              xmlns:xlink="http://www.w3.org/1999/xlink"
-                            ></use>
-                          </svg>
-                        </div>
-                        <div class="rating__star">
-                          <svg
-                            class="ico-svg"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <use
-                              xlink:href="@img/sprites/sprite.svg#star"
-                              xmlns:xlink="http://www.w3.org/1999/xlink"
-                            ></use>
-                          </svg>
-                        </div>
-                        <div class="rating__star">
-                          <svg
-                            class="ico-svg"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <use
-                              xlink:href="@img/sprites/sprite.svg#star"
-                              xmlns:xlink="http://www.w3.org/1999/xlink"
-                            ></use>
-                          </svg>
-                        </div>
-                        <div class="rating__star">
-                          <svg
-                            class="ico-svg"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <use
-                              xlink:href="@img/sprites/sprite.svg#star"
-                              xmlns:xlink="http://www.w3.org/1999/xlink"
-                            ></use>
-                          </svg>
-                        </div>
-                        <div class="rating__star">
-                          <svg
-                            class="ico-svg"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <use
-                              xlink:href="@img/sprites/sprite.svg#star"
-                              xmlns:xlink="http://www.w3.org/1999/xlink"
-                            ></use>
-                          </svg>
-                        </div>
-                      </div>
-                      <div class="rating__active" data-rating-active>
-                        <div class="rating__star">
-                          <svg
-                            class="ico-svg"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <use
-                              xlink:href="@img/sprites/sprite.svg#star"
-                              xmlns:xlink="http://www.w3.org/1999/xlink"
-                            ></use>
-                          </svg>
-                        </div>
-                        <div class="rating__star">
-                          <svg
-                            class="ico-svg"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <use
-                              xlink:href="@img/sprites/sprite.svg#star"
-                              xmlns:xlink="http://www.w3.org/1999/xlink"
-                            ></use>
-                          </svg>
-                        </div>
-                        <div class="rating__star">
-                          <svg
-                            class="ico-svg"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <use
-                              xlink:href="@img/sprites/sprite.svg#star"
-                              xmlns:xlink="http://www.w3.org/1999/xlink"
-                            ></use>
-                          </svg>
-                        </div>
-                        <div class="rating__star">
-                          <svg
-                            class="ico-svg"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <use
-                              xlink:href="@img/sprites/sprite.svg#star"
-                              xmlns:xlink="http://www.w3.org/1999/xlink"
-                            ></use>
-                          </svg>
-                        </div>
-                        <div class="rating__star">
-                          <svg
-                            class="ico-svg"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <use
-                              xlink:href="@img/sprites/sprite.svg#star"
-                              xmlns:xlink="http://www.w3.org/1999/xlink"
-                            ></use>
-                          </svg>
-                        </div>
-                      </div>
-                      <div class="rating__items">
-                        <div class="rating__item" data-rating-item="5"></div>
-                        <div class="rating__item" data-rating-item="4"></div>
-                        <div class="rating__item" data-rating-item="3"></div>
-                        <div class="rating__item" data-rating-item="2"></div>
-                        <div class="rating__item" data-rating-item="1"></div>
-                      </div>
-                    </div>
-
-                    <input
-                      type="hidden"
-                      name="rating"
-                      value="3.5"
-                      disabled
-                      data-rating-input
-                    />
-                  </div>
+                  <RatingStars :rating="`${item.rating}`" />
                 </div>
                 <!-- .item__rating -->
                 <div class="item__control">
@@ -214,13 +106,16 @@
                 </div>
                 <!-- .item__control -->
                 <div class="item__title">
-                  <a href="#">Atvel робот - пылесос SmartGyro R80 Base Black</a>
+                  <a href="#">{{ item.linkText }}</a>
                 </div>
                 <!-- .item__title -->
-                <div class="item__tag">Wooden</div>
+                <div class="item__tag">{{ item.tag }}</div>
                 <!-- .item__tag -->
                 <div class="item__price">
-                  <span class="color-red">$</span> 590
+                  <span class="color-red">
+                    {{ item.currency }}
+                  </span>
+                  {{ item.price }}
                 </div>
                 <!-- .item__price -->
               </div>
@@ -1490,6 +1385,51 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useApi } from "../../../src/composables/useApi";
+import { useLocale } from "../../../src/composables/useLocale";
+import { Swiper, SwiperSlide } from "swiper/vue";
+import { Navigation } from "swiper/modules";
+const locale = useLocale();
+const query = `?populate=*`;
+
+const content = ref({
+  productList: [
+    {
+      action: "",
+      linkText: "",
+      tag: "",
+      currency: "",
+      price: "",
+      imageAlt: "",
+      imageClass: "",
+      hoverImageAlt: "",
+      hoverImageClass: "",
+      rating: "",
+    },
+  ],
+  imageList: [],
+  hoverImageList: [],
+});
+
+const getContent = async () => {
+  const { data: data, error } = await useApi<any>(`/product-content${query}`);
+
+  if (data.value) {
+    content.value = data.value.data.attributes;
+
+    console.log(data.value.data.attributes);
+  }
+
+  if (error.value) {
+    console.log(error);
+  }
+};
+
+await getContent();
+watch(locale, async () => {
+  await getContent();
+});
+</script>
 
 <style scoped></style>

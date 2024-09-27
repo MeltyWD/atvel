@@ -12,211 +12,100 @@
         </div>
         <div class="news-header__media">
           <div class="news-header__trailer news-header__trailer--01">
-            <div class="swiper" data-trailer-01>
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <div class="news-header__image">
-                    <img
-                      src="@img/news-header/news_header_image__01.jpg"
-                      class="img-cover"
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="news-header__image">
-                    <img
-                      src="@img/news-header/news_header_image__02.jpg"
-                      class="img-cover"
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="news-header__image">
-                    <img
-                      src="@img/news-header/news_header_image__01.jpg"
-                      class="img-cover"
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="news-header__image">
-                    <img
-                      src="@img/news-header/news_header_image__03.jpg"
-                      class="img-cover"
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="news-header__image">
-                    <img
-                      src="@img/news-header/news_header_image__04.jpg"
-                      class="img-cover"
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="news-header__image">
-                    <img
-                      src="@img/news-header/news_header_image__06.jpg"
-                      class="img-cover"
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="news-header__image">
-                    <img
-                      src="@img/news-header/news_header_image__05.jpg"
-                      class="img-cover"
-                      alt=""
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
+            <swiper
+              :modules="[Autoplay]"
+              :observer="true"
+              :loop="true"
+              :initialSlide="2"
+              :observeParents="true"
+              slidesPerView="auto"
+              :spaceBetween="10"
+              :speed="6000"
+              :autoplay="{
+                delay: 0,
+                reverseDirection: false,
+                disableOnInteraction: false,
+              }"
+              :breakpoints="{
+                768: {
+                  direction: 'vertical',
+                  spaceBetween: 10,
+                },
+                1250: {
+                  direction: 'vertical',
+                  spaceBetween: 20,
+                },
+              }"
+              :on="{}"
+            >
+              <swiper-slide v-for="item of items">
+                <ItemShowcase :webp="item.webp" :img="item.img" />
+              </swiper-slide>
+            </swiper>
           </div>
           <div class="news-header__trailer news-header__trailer--02">
-            <div class="swiper" data-trailer-02>
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <div class="news-header__image news-header__image--md">
-                    <img
-                      src="@img/news-header/news_header_image__05.jpg"
-                      class="img-cover"
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="news-header__image news-header__image--md">
-                    <img
-                      src="@img/news-header/news_header_image__04.jpg"
-                      class="img-cover"
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="news-header__image news-header__image--md">
-                    <img
-                      src="@img/news-header/news_header_image__07.jpg"
-                      class="img-cover"
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="news-header__image news-header__image--md">
-                    <img
-                      src="@img/news-header/news_header_image__08.jpg"
-                      class="img-cover"
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="news-header__image news-header__image--md">
-                    <img
-                      src="@img/news-header/news_header_image__04.jpg"
-                      class="img-cover"
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="news-header__image news-header__image--md">
-                    <img
-                      src="@img/news-header/news_header_image__09.jpg"
-                      class="img-cover"
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="news-header__image news-header__image--md">
-                    <img
-                      src="@img/news-header/news_header_image__01.jpg"
-                      class="img-cover"
-                      alt=""
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
+            <swiper
+              :modules="[Autoplay]"
+              :observer="true"
+              :loop="true"
+              :initialSlide="2"
+              :observeParents="true"
+              slidesPerView="auto"
+              :spaceBetween="10"
+              :speed="8000"
+              :autoplay="{
+                delay: 0,
+                reverseDirection: false,
+                disableOnInteraction: false,
+              }"
+              :breakpoints="{
+                768: {
+                  direction: 'vertical',
+                  spaceBetween: 10,
+                },
+                1250: {
+                  direction: 'vertical',
+                  spaceBetween: 20,
+                },
+              }"
+              :on="{}"
+            >
+              <swiper-slide v-for="item of items">
+                <ItemShowcase :webp="item.webp" :img="item.img" />
+              </swiper-slide>
+            </swiper>
           </div>
           <div class="news-header__trailer news-header__trailer--03">
-            <div class="swiper" data-trailer-03>
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <div class="news-header__image news-header__image--xl">
-                    <img
-                      src="@img/news-header/news_header_image__03.jpg"
-                      class="img-cover"
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="news-header__image news-header__image--xl">
-                    <img
-                      src="@img/news-header/news_header_image__06.jpg"
-                      class="img-cover"
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="news-header__image news-header__image--xl">
-                    <img
-                      src="@img/news-header/news_header_image__02.jpg"
-                      class="img-cover"
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="news-header__image news-header__image--xl">
-                    <img
-                      src="@img/news-header/news_header_image__01.jpg"
-                      class="img-cover"
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="news-header__image news-header__image--xl">
-                    <img
-                      src="@img/news-header/news_header_image__04.jpg"
-                      class="img-cover"
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="news-header__image news-header__image--xl">
-                    <img
-                      src="@img/news-header/news_header_image__05.jpg"
-                      class="img-cover"
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div class="swiper-slide">
-                  <div class="news-header__image news-header__image--xl">
-                    <img
-                      src="@img/news-header/news_header_image__08.jpg"
-                      class="img-cover"
-                      alt=""
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
+            <swiper
+              :modules="[Autoplay]"
+              :observer="true"
+              :loop="true"
+              :initialSlide="2"
+              :observeParents="true"
+              slidesPerView="auto"
+              :spaceBetween="10"
+              :speed="7000"
+              :autoplay="{
+                delay: 0,
+                reverseDirection: false,
+                disableOnInteraction: false,
+              }"
+              :breakpoints="{
+                768: {
+                  direction: 'vertical',
+                  spaceBetween: 10,
+                },
+                1250: {
+                  direction: 'vertical',
+                  spaceBetween: 20,
+                },
+              }"
+              :on="{}"
+            >
+              <swiper-slide v-for="item of items">
+                <ItemShowcase :webp="item.webp" :img="item.img" />
+              </swiper-slide>
+            </swiper>
           </div>
         </div>
       </div>
@@ -230,17 +119,6 @@
         :content="content.prettyHeadingContent"
         :full="content.prettyHeadingContent.full"
       />
-      <!-- <div class="pretty-heading">
-        <div class="pretty-heading__tag">Latest</div>
-        <h2 class="pretty-heading__title">
-          Experience the future of home appliances
-        </h2>
-        <div class="pretty-heading__text">
-          Discover the latest advancements and insights in home appliance
-          technology.
-        </div>
-      </div> -->
-      <!-- .pretty-heading -->
 
       <div class="news-primary">
         <div class="news-primary__main">
@@ -315,197 +193,6 @@
                 </NuxtLink>
               </div>
             </div>
-
-            <!-- <div class="news-item">
-              <NuxtLink to="/news/post" class="news-item__media">
-                <img
-                  src="@img/content/news_item_image.jpg"
-                  class="img-cover"
-                  alt=""
-                />
-              </NuxtLink>
-              <div class="news-item__title">
-                <NuxtLink to="/news/post"
-                  >Discover a&nbsp;Wide Range of&nbsp;High-Quality
-                  Products</NuxtLink
-                >
-              </div>
-              <div class="news-item__text">
-                Explore our extensive collection of home goods, including
-                furniture, decor, bedding, kitchenware, and more. Each product
-                is meticulously crafted with attention to detail and innovative
-                design elements.
-              </div>
-              <div class="news-item__footer">
-                <NuxtLink to="/news/post" class="news-item__link"
-                  >Technology</NuxtLink
-                >
-              </div>
-            </div>
-
-            <div class="news-item">
-              <NuxtLink to="/news/post" class="news-item__media">
-                <img
-                  src="@img/content/news_item_image.jpg"
-                  class="img-cover"
-                  alt=""
-                />
-              </NuxtLink>
-              <div class="news-item__title">
-                <NuxtLink to="/news/post"
-                  >Discover a&nbsp;Wide Range of&nbsp;High-Quality
-                  Products</NuxtLink
-                >
-              </div>
-              <div class="news-item__text">
-                Explore our extensive collection of home goods, including
-                furniture, decor, bedding, kitchenware, and more. Each product
-                is meticulously crafted with attention to detail and innovative
-                design elements.
-              </div>
-              <div class="news-item__footer">
-                <NuxtLink to="/news/post" class="news-item__link"
-                  >Technology</NuxtLink
-                >
-              </div>
-            </div>
-
-            <div class="news-item">
-              <NuxtLink to="/news/post" class="news-item__media">
-                <img
-                  src="@img/content/news_item_image.jpg"
-                  class="img-cover"
-                  alt=""
-                />
-              </NuxtLink>
-              <div class="news-item__title">
-                <NuxtLink to="/news/post"
-                  >Discover a&nbsp;Wide Range of&nbsp;High-Quality
-                  Products</NuxtLink
-                >
-              </div>
-              <div class="news-item__text">
-                Explore our extensive collection of home goods, including
-                furniture, decor, bedding, kitchenware, and more. Each product
-                is meticulously crafted with attention to detail and innovative
-                design elements.
-              </div>
-              <div class="news-item__footer">
-                <NuxtLink to="/news/post" class="news-item__link"
-                  >Technology</NuxtLink
-                >
-              </div>
-            </div>
-
-
-            <div class="news-item">
-              <NuxtLink to="/news/post" class="news-item__media">
-                <img
-                  src="@img/content/news_item_image.jpg"
-                  class="img-cover"
-                  alt=""
-                />
-              </NuxtLink>
-              <div class="news-item__title">
-                <NuxtLink to="/news/post"
-                  >Discover a&nbsp;Wide Range of High&nbsp;-&nbsp;Quality
-                  Products</NuxtLink
-                >
-              </div>
-              <div class="news-item__text">
-                Explore our extensive collection of home goods, including
-                furniture, decor, bedding, kitchenware, and more. Each product
-                is meticulously crafted with attention to detail and innovative
-                design elements.
-              </div>
-              <div class="news-item__footer">
-                <NuxtLink to="/news/post" class="news-item__link"
-                  >Technology</NuxtLink
-                >
-              </div>
-            </div>
-        
-            <div class="news-item">
-              <NuxtLink to="/news/post" class="news-item__media">
-                <img
-                  src="@img/content/news_item_image.jpg"
-                  class="img-cover"
-                  alt=""
-                />
-              </NuxtLink>
-              <div class="news-item__title">
-                <NuxtLink to="/news/post"
-                  >Discover a&nbsp;Wide Range of&nbsp;High-Quality
-                  Products</NuxtLink
-                >
-              </div>
-              <div class="news-item__text">
-                Explore our extensive collection of home goods, including
-                furniture, decor, bedding, kitchenware, and more. Each product
-                is meticulously crafted with attention to detail and innovative
-                design elements.
-              </div>
-              <div class="news-item__footer">
-                <NuxtLink to="/news/post" class="news-item__link"
-                  >Technology</NuxtLink
-                >
-              </div>
-            </div>
-            
-            <div class="news-item">
-              <NuxtLink to="/news/post" class="news-item__media">
-                <img
-                  src="@img/content/news_item_image.jpg"
-                  class="img-cover"
-                  alt=""
-                />
-              </NuxtLink>
-              <div class="news-item__title">
-                <NuxtLink to="/news/post"
-                  >Discover a&nbsp;Wide Range of&nbsp;High-Quality
-                  Products</NuxtLink
-                >
-              </div>
-              <div class="news-item__text">
-                Explore our extensive collection of home goods, including
-                furniture, decor, bedding, kitchenware, and more. Each product
-                is meticulously crafted with attention to detail and innovative
-                design elements.
-              </div>
-              <div class="news-item__footer">
-                <NuxtLink to="/news/post" class="news-item__link"
-                  >Technology</NuxtLink
-                >
-              </div>
-            </div>
-            
-            <div class="news-item">
-              <NuxtLink to="/news/post" class="news-item__media">
-                <img
-                  src="@img/content/news_item_image.jpg"
-                  class="img-cover"
-                  alt=""
-                />
-              </NuxtLink>
-              <div class="news-item__title">
-                <NuxtLink to="/news/post"
-                  >Discover a&nbsp;Wide Range of&nbsp;High-Quality
-                  Products</NuxtLink
-                >
-              </div>
-              <div class="news-item__text">
-                Explore our extensive collection of home goods, including
-                furniture, decor, bedding, kitchenware, and more. Each product
-                is meticulously crafted with attention to detail and innovative
-                design elements.
-              </div>
-              <div class="news-item__footer">
-                <NuxtLink to="/news/post" class="news-item__link"
-                  >Technology</NuxtLink
-                >
-              </div>
-            </div>
-             -->
           </div>
         </div>
         <div class="news-block__footer">
@@ -522,37 +209,6 @@
       :content="content.subscriptionContent"
       :isPost="content.subscriptionContent.isPost"
     />
-    <!-- <div class="container">
-      <div class="subscribe">
-        <h2 class="subscribe__title">
-          {{ content.subscriptionContent.title }}
-        </h2>
-        <div class="subscribe__subtitle">
-          {{ content.subscriptionContent.subtitle }}
-        </div>
-        <div class="subscribe__main">
-          <form>
-            <div class="subscribe__form">
-              <div class="subscribe__field">
-                <input
-                  type="text"
-                  name="email"
-                  placeholder="Enter your email"
-                />
-              </div>
-              <div class="subscribe__button">
-                <button type="submit" class="btn btn-red">
-                  <span>{{ content.subscriptionContent.button }}</span>
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class="subscribe__text">
-          {{ content.subscriptionContent.text }}
-        </div>
-      </div>
-    </div> -->
   </div>
 </template>
 
@@ -561,10 +217,45 @@ import { useApi } from "../../src/composables/useApi";
 import { useLocale } from "../../src/composables/useLocale";
 import SubscriptionForm from "./components/SubscriptionForm.vue";
 
+import { Swiper, SwiperSlide } from "swiper/vue";
+import { Autoplay } from "swiper/modules";
+import ItemShowcase from "./components/NewsShowcase/items.vue";
+
 const locale = useLocale();
 const { find } = useStrapi();
 const posts = ref<any[]>([]);
 const query = `?populate=*`;
+
+const items = [
+  {
+    webp: "@img/news-header/news_header_image__01.jpg",
+    img: "@img/news-header/news_header_image__01.jpg",
+  },
+  {
+    webp: "@img/content/showcase_image__02.webp",
+    img: "@img/content/showcase_image__02.jpg",
+  },
+  {
+    webp: "@img/content/showcase_image__03.webp",
+    img: "@img/content/showcase_image__03.jpg",
+  },
+  {
+    webp: "@img/content/showcase_image__04.webp",
+    img: "@img/content/showcase_image__04.jpg",
+  },
+  {
+    webp: "@img/content/showcase_image__05.webp",
+    img: "@img/content/showcase_image__05.jpg",
+  },
+  {
+    webp: "@img/content/showcase_image__06.webp",
+    img: "@img/content/showcase_image__06.jpg",
+  },
+  {
+    webp: "@img/content/showcase_image__07.webp",
+    img: "@img/content/showcase_image__07.jpg",
+  },
+];
 
 const content = ref({
   headerContent: {

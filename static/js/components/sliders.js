@@ -200,24 +200,24 @@ export default () => {
       });
     }
 
-    if (document.querySelector("[data-tabs-navigation]")) {
-      new Swiper("[data-tabs-navigation]", {
-        observer: true,
-        observeParents: true,
-        slidesPerView: "auto",
-        spaceBetween: 30,
-        speed: 500,
-        breakpoints: {
-          1024: {
-            spaceBetween: 10,
-          },
-          1250: {
-            spaceBetween: 30,
-          },
-        },
-        on: {},
-      });
-    }
+    // if (document.querySelector("[data-tabs-navigation]")) {
+    //   new Swiper("[data-tabs-navigation]", {
+    //     observer: true,
+    //     observeParents: true,
+    //     slidesPerView: "auto",
+    //     spaceBetween: 30,
+    //     speed: 500,
+    //     breakpoints: {
+    //       1024: {
+    //         spaceBetween: 10,
+    //       },
+    //       1250: {
+    //         spaceBetween: 30,
+    //       },
+    //     },
+    //     on: {},
+    //   });
+    // }
 
     if (document.querySelector("[data-comments]")) {
       new Swiper("[data-comments]", {

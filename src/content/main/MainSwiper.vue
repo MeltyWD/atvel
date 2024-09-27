@@ -2,7 +2,49 @@
   <div class="section">
     <div class="container">
       <div class="hint-block mb-0">
-        <div class="swiper" data-hint>
+        <swiper
+          data-hint
+          :observer="true"
+          :observeParents="true"
+          slidesPerView="auto"
+          :spaceBetween="10"
+          :speed="500"
+          :breakpoints="{
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 10,
+            },
+            1250: {
+              slidesPerView: 3,
+              spaceBetween: 20,
+            },
+          }"
+          :on="{}"
+        >
+          <swiper-slide v-for="item in content.hintList">
+            <div class="hint">
+              <div class="hint__icon">
+                <svg
+                  class="ico-svg"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <use
+                    xlink:href="@img/sprites/sprite.svg#traced"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                  ></use>
+                </svg>
+              </div>
+              <div class="hint__title">
+                {{ item.title }}
+              </div>
+              <div class="hint__text">
+                {{ item.text }}
+              </div>
+            </div>
+          </swiper-slide>
+        </swiper>
+        <!-- <div class="swiper" data-hint>
           <div class="swiper-wrapper">
             <div class="swiper-slide">
               <div class="hint">
@@ -28,7 +70,6 @@
                   innovative design elements.
                 </div>
               </div>
-              <!-- .hint -->
             </div>
             <div class="swiper-slide">
               <div class="hint">
@@ -54,7 +95,6 @@
                   unique style.
                 </div>
               </div>
-              <!-- .hint -->
             </div>
             <div class="swiper-slide">
               <div class="hint">
@@ -80,16 +120,48 @@
                   goods.
                 </div>
               </div>
-              <!-- .hint -->
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
-      <!-- .hint-block -->
     </div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { Swiper, SwiperSlide } from "swiper/vue";
+import { useApi } from "../../composables/useApi";
+import { useLocale } from "../../composables/useLocale";
+const locale = useLocale();
+const content = ref({
+  hintList: [
+    {
+      title: "",
+      text: "",
+    },
+  ],
+});
+const query = `?populate=*`;
+
+const getContent = async () => {
+  const { data: data, error } = await useApi<any>(`/main-page${query}`);
+
+  if (data.value) {
+    content.value = data.value.data.attributes;
+
+    console.log(data.value.data.attributes);
+  }
+
+  if (error.value) {
+    console.log(error);
+  }
+};
+
+await getContent();
+
+watch(locale, async () => {
+  await getContent();
+});
+</script>
 
 <style scoped></style>
