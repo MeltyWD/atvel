@@ -23,7 +23,7 @@
 
       <div class="tabs" data-tabs>
         <div class="tabs__header">
-          <div class="swiper" data-tabs-navigation>
+          <!-- <div class="swiper" data-tabs-navigation>
             <div class="swiper-wrapper">
               <div class="swiper-slide">
                 <button class="tabs__btn active" data-tabs-nav="tab1">
@@ -46,7 +46,41 @@
                 </button>
               </div>
             </div>
-          </div>
+          </div> -->
+          <swiper
+            data-tabs-navigation
+            :observer="true"
+            :observeParents="true"
+            slidesPerView="auto"
+            :spaceBetween="30"
+            :speed="500"
+            :breakpoints="{
+              1024: {
+                spaceBetween: 10,
+              },
+              1250: {
+                spaceBetween: 30,
+              },
+            }"
+            :on="{}"
+          >
+            <swiper-slide>
+              <ProductTabs
+                tabName="tab1"
+                :text="content.description"
+                :isActive="true"
+              />
+            </swiper-slide>
+            <swiper-slide>
+              <ProductTabs tabName="tab2" :text="content.specification" />
+            </swiper-slide>
+            <swiper-slide>
+              <ProductTabs tabName="tab3" :text="content.review" />
+            </swiper-slide>
+            <swiper-slide>
+              <ProductTabs tabName="tab4" :text="content.certificates" />
+            </swiper-slide>
+          </swiper>
         </div>
         <div class="tabs__content active" data-tabs-target="tab1">
           <!-- .tabs__content -->
@@ -171,7 +205,9 @@ import ProductDocs from "./components/ProductDocs.vue";
 import ProductRecommendation from "./components/ProductRecommendation.vue";
 import ProductReviewRating from "./components/ProductReviewRating.vue";
 import ProductReview from "./components/ProductReview.vue";
-
+import { useLocale } from "../../src/composables/useLocale";
+import { Swiper, SwiperSlide } from "swiper/vue";
+import ProductTabs from "../../pages/product/components/ProductTabs.vue";
 const route = useRoute();
 
 onMounted(async () => {
@@ -179,8 +215,6 @@ onMounted(async () => {
     Sliders();
   }
 });
-
-import { useLocale } from "../../src/composables/useLocale";
 
 const { findOne, find } = useStrapi();
 

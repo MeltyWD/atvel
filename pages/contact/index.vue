@@ -124,26 +124,6 @@
             :content="content.formContent"
             :empty="content.formContent.empty"
           />
-          <!-- <div class="main-form__field main-form__field--xl mt-10">
-            <div class="main-form__group">
-              <div class="main-form__item">
-                <label class="checkbox">
-                  <input
-                    type="checkbox"
-                    name="check"
-                    class="checkbox__input"
-                    checked
-                  />
-                  <span class="checkbox__label">{{ checkboxLabel }}</span>
-                </label>
-              </div>
-              <div class="main-form__item">
-                <button type="button" class="btn btn-red btn-md">
-                  <span>{{ submitBtnText }}</span>
-                </button>
-              </div>
-            </div>
-          </div> -->
         </div>
       </form>
     </div>
@@ -156,52 +136,11 @@
         :altName="content.mapImageAlt"
         :className="content.mapImageClass"
       />
-      <!-- <img src="@img/content/map.jpg" class="img-cover" alt="" /> -->
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-const headingContent = {
-  title: "Contact us",
-  text: `Atvel's website offers a seamless shopping experience with easy
-          navigation, ensuring that you can find and purchase your desired home
-          goods hassle-free. Our user-friendly interface is designed to make
-          your shopping journey enjoyable and efficient.`,
-};
-const introContent = {
-  title: "Experience a Friendly Interface for Effortless",
-  lead: `Atvel's website offers a seamless shopping experience with easy
-            navigation, ensuring that you can find and purchase your desired
-            home goods hassle-free. Our user-friendly interface is designed to
-            make your shopping journey enjoyable and efficient.`,
-};
-const sectionContent = {
-  tag: "Convenient",
-  title: "Get in touch",
-  text: `Travel offers a wide range of home goods that can be personalized to
-          match your unique taste. Choose from personalized designs.`,
-};
-// const contactsContent = [
-//   {
-//     label: "Phone",
-//     value: "+7 (911) 234-34-34",
-//   },
-// ];
-const phoneContent = {
-  label: "Phone",
-  value: "+7 (911) 234-34-34",
-};
-const mailContent = {
-  label: "Mail",
-  value: "mail@mail.ru",
-};
-const officeContent = {
-  label: "Office",
-  value: "123, Main St. Sydney NSW 2000, Australia",
-};
-const checkboxLabel = "I agree to the Terms";
-const submitBtnText = "Send";
 import { useApi } from "../../src/composables/useApi";
 import { useLocale } from "../../src/composables/useLocale";
 
