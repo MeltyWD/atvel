@@ -110,64 +110,6 @@
         </div>
         <div class="tabs__content" data-tabs-target="tab2">
           <ProductSpecifications :specifications="product.specifications" />
-          <!-- <div class="product-specifications">
-            <div class="product-specifications__item">
-              <div class="product-specifications__tile">Характеристика</div>
-              <div class="product-specifications__line"></div>
-              <div class="product-specifications__value">Text</div>
-            </div>
-            <div class="product-specifications__item">
-              <div class="product-specifications__tile">Характеристика</div>
-              <div class="product-specifications__line"></div>
-              <div class="product-specifications__value">Text</div>
-            </div>
-            <div class="product-specifications__item">
-              <div class="product-specifications__tile">Характеристика</div>
-              <div class="product-specifications__line"></div>
-              <div class="product-specifications__value">Text</div>
-            </div>
-            <div class="product-specifications__item">
-              <div class="product-specifications__tile">Характеристика</div>
-              <div class="product-specifications__line"></div>
-              <div class="product-specifications__value">Text</div>
-            </div>
-            <div class="product-specifications__item">
-              <div class="product-specifications__tile">Характеристика</div>
-              <div class="product-specifications__line"></div>
-              <div class="product-specifications__value">Text</div>
-            </div>
-            <div class="product-specifications__item">
-              <div class="product-specifications__tile">Характеристика</div>
-              <div class="product-specifications__line"></div>
-              <div class="product-specifications__value">Text</div>
-            </div>
-
-            <div class="product-specifications__item">
-              <div class="product-specifications__tile">Характеристика</div>
-              <div class="product-specifications__line"></div>
-              <div class="product-specifications__value">Text</div>
-            </div>
-            <div class="product-specifications__item">
-              <div class="product-specifications__tile">Характеристика</div>
-              <div class="product-specifications__line"></div>
-              <div class="product-specifications__value">Text</div>
-            </div>
-            <div class="product-specifications__item">
-              <div class="product-specifications__tile">Характеристика</div>
-              <div class="product-specifications__line"></div>
-              <div class="product-specifications__value">Text</div>
-            </div>
-            <div class="product-specifications__item">
-              <div class="product-specifications__tile">Характеристика</div>
-              <div class="product-specifications__line"></div>
-              <div class="product-specifications__value">Text</div>
-            </div>
-            <div class="product-specifications__item">
-              <div class="product-specifications__tile">Характеристика</div>
-              <div class="product-specifications__line"></div>
-              <div class="product-specifications__value">Text</div>
-            </div>
-          </div> -->
         </div>
         <!-- .tabs__content -->
         <!-- <div class="tabs__content" data-tabs-target="tab3">
@@ -221,6 +163,7 @@ const { findOne, find } = useStrapi();
 const locale = useLocale();
 
 const product = ref({
+  article: "",
   title: "",
   isNew: false,
   isActive: false,

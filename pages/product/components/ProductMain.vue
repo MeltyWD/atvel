@@ -31,7 +31,11 @@
       </div>
       <!-- .product-price -->
       <div class="product__order">
-        <button type="button" class="btn btn-red btn-md w-100">
+        <button
+          type="button"
+          class="btn btn-red btn-md w-100"
+          @click="addToCart"
+        >
           <span>{{ content.addToCart }}</span>
         </button>
       </div>
@@ -87,8 +91,13 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
+import { useCartState } from "~/src/composables/useCartState";
+
+const cartState = useCartState();
+
+const props = defineProps<{
   product: {
+    article: string;
     isNew: boolean;
     isActive: boolean;
     price: number;
@@ -111,6 +120,16 @@ defineProps<{
     specification: string;
   };
 }>();
+
+const addToCart = () => {
+  cartState.value.push({
+    article: props.product.article,
+    quantity: 1,
+    isChecked: true,
+  });
+
+  localStorage.setItem("userCart", JSON.stringify(cartState.value));
+};
 </script>
 
 <style scoped></style>

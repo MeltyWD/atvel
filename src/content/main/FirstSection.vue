@@ -75,31 +75,6 @@
                 </div>
               </div>
             </swiper-slide>
-            <swiper-slide>
-              <div class="primary-item">
-                <div class="primary-item__content">
-                  <div class="primary-item__title">
-                    <a href="#"
-                      >Atvel <br />робот-пылесос SmartGyro R80 Base Black</a
-                    >
-                  </div>
-                  <div class="primary-item__price">
-                    <div class="primary-item__price-new">
-                      <span class="color-red">$</span>
-                      590
-                    </div>
-                    <div class="primary-item__price-old">$ 720</div>
-                  </div>
-                </div>
-                <div class="primary-item__media">
-                  <img
-                    src="@img/content/primary_product_item.png"
-                    class="img-fluid"
-                    alt=""
-                  />
-                </div>
-              </div>
-            </swiper-slide>
             <div class="primary__pagination" data-primary-pagination></div>
           </swiper>
         </div>

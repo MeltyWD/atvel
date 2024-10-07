@@ -166,117 +166,9 @@
             </i>
             <span>mail@mail.ru</span> </a
           ><!-- .header-email -->
-          <div class="mini-cart" data-dropdown>
-            <button
-              type="button"
-              class="mini-cart__button"
-              data-dropdown-toggle
-            >
-              <span class="mini-cart__count">3</span>
-              <i class="mini-cart__icon">
-                <svg
-                  class="ico-svg"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <use
-                    xlink:href="@img/sprites/sprite.svg#cart"
-                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                  ></use>
-                </svg>
-              </i></button
-            ><!-- .mini-cart__button -->
-            <div class="mini-cart__content" data-dropdown-content>
-              <div class="mini-cart__list">
-                <div class="mini-cart__item">
-                  <a href="#" class="mini-cart__image">
-                    <img
-                      src="@img/content/mini_cart_image.png"
-                      class="img-cover"
-                      alt=""
-                    />
-                  </a>
-                  <div class="mini-cart__description">
-                    <div class="mini-cart__title">
-                      <NuxtLink to="/product">Product name</NuxtLink>
-                    </div>
-                    <div class="mini-cart__text">
-                      Количество:
-                      <span class="color-black">1</span>
-                    </div>
-                    <div class="mini-cart__price">
-                      <span class="color-red">$</span>
-                      590
-                    </div>
-                  </div>
-                </div>
-                <!-- .mini-cart__item -->
-                <div class="mini-cart__item">
-                  <a href="#" class="mini-cart__image">
-                    <img
-                      src="@img/content/mini_cart_image.png"
-                      class="img-cover"
-                      alt=""
-                    />
-                  </a>
-                  <div class="mini-cart__description">
-                    <div class="mini-cart__title">
-                      <NuxtLink to="/product">Product name</NuxtLink>
-                    </div>
-                    <div class="mini-cart__text">
-                      Количество:
-                      <span class="color-black">1</span>
-                    </div>
-                    <div class="mini-cart__price">
-                      <span class="color-red">$</span>
-                      590
-                    </div>
-                  </div>
-                </div>
-                <!-- .mini-cart__item -->
-                <div class="mini-cart__item">
-                  <a href="#" class="mini-cart__image">
-                    <img
-                      src="@img/content/mini_cart_image.png"
-                      class="img-cover"
-                      alt=""
-                    />
-                  </a>
-                  <div class="mini-cart__description">
-                    <div class="mini-cart__title">
-                      <NuxtLink to="/product">Product name</NuxtLink>
-                    </div>
-                    <div class="mini-cart__text">
-                      Количество:
-                      <span class="color-black">1</span>
-                    </div>
-                    <div class="mini-cart__price">
-                      <span class="color-red">$</span>
-                      590
-                    </div>
-                  </div>
-                </div>
-                <!-- .mini-cart__item -->
-              </div>
-              <!-- .mini-cart__list -->
-              <div class="mini-cart__footer">
-                <div class="mini-cart__summary">
-                  <div class="mini-cart__label">Итого:</div>
-                  <div class="mini-cart__total">
-                    <span class="color-red">$</span>
-                    590
-                  </div>
-                </div>
-                <div class="mini-cart__send">
-                  <NuxtLink to="/cart" class="btn btn-md btn-red" prefetch>
-                    <span>Buy</span>
-                  </NuxtLink>
-                </div>
-              </div>
-            </div>
-            <!-- .mini-cart__content -->
-          </div>
-          <!-- .mini-cart -->
+
+          <MiniCart />
+
           <button type="button" class="header-burger" data-nav-toggle>
             <i class="header-burger__menu">
               <svg
@@ -314,6 +206,7 @@
 
 <script setup lang="ts">
 import { Locale, useLocale } from "../composables/useLocale";
+import MiniCart from "./HeaderComponents/MiniCart.vue";
 
 const locale = useLocale();
 
@@ -323,7 +216,7 @@ const setLocale = () => {
   } else {
     locale.value = Locale.ru;
   }
-  localStorage.setItem("userLocale", Locale.ru);
+  localStorage.setItem("userLocale", locale.value);
 };
 </script>
 
